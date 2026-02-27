@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Hub | Study Collection</title>
+    <title>Quizzes</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -162,7 +162,8 @@
             margin-top: auto;
             width: 100%;
             padding: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
             background: var(--footer-bg);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(128, 128, 128, 0.2);
@@ -172,14 +173,17 @@
             text-decoration: none;
             color: var(--primary-color);
             font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1rem;
+            display: inline-block;
+            margin-left:10px ;
+            gap: 12px;
+            font-size: 1.4rem;
+            transition: all .5s ease;
         }
 
         .footer-link:hover {
-            text-decoration: underline;
+            text-decoration: none;
+            transform: scale(1.2);
+            
         }
 
         /* التوافق مع الجوال */
@@ -201,7 +205,7 @@
         </nav>
 
         <header>
-            <h1>Quiz Hub</h1>
+            <h1>Quizzes</h1>
             <p class="description">
                 Welcome to the ultimate interactive collection of quizzes. 
                 Everything you need to study in one fun and organized place.
@@ -210,7 +214,7 @@
 
         <main class="grid">
             <div class="card" onclick="location.href='organic.html'">
-                <i class="fas fa-flask-vial"></i>
+               <i class="fa-duotone fa-regular fa-flask-vial"></i>
                 <h3>Organic II</h3>
             </div>
             <div class="card" onclick="location.href='analytical.html'">
@@ -242,7 +246,7 @@
         <footer>
             <p>If you have any suggestions, contact me:</p>
             <a href="https://t.me/YourUsername" class="footer-link" target="_blank">
-                <i class="fab fa-telegram"></i> Telegram
+                <i class="fab fa-telegram"></i> 
             </a>
         </footer>
     </div>
@@ -250,11 +254,11 @@
     <script>
         // 1. نظام الفيديوهات العشوائية عند الريفرش
         const videoSources = [
-            "https://assets.mixkit.co/videos/preview/mixkit-hand-taking-notes-on-a-notebook-41133-large.mp4",
-            "https://assets.mixkit.co/videos/preview/mixkit-studying-hard-at-a-desk-40058-large.mp4",
-            "https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-person-writing-on-a-notebook-41132-large.mp4",
-            "https://assets.mixkit.co/videos/preview/mixkit-searching-for-information-in-the-library-42774-large.mp4",
-            "https://assets.mixkit.co/videos/preview/mixkit-books-stack-on-a-wooden-table-11532-large.mp4"
+            "https://www.freepik.com/free-video/stationary-shot-silver-confetti-falling-against-grey-background_154581#fromView=keyword&page=1&position=0&uuid=33c78fd7-cd03-4ce2-98e2-140d79866e6b",
+            // "https://assets.mixkit.co/videos/preview/mixkit-studying-hard-at-a-desk-40058-large.mp4",
+            // "https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-person-writing-on-a-notebook-41132-large.mp4",
+            // "https://assets.mixkit.co/videos/preview/mixkit-searching-for-information-in-the-library-42774-large.mp4",
+            // "https://assets.mixkit.co/videos/preview/mixkit-books-stack-on-a-wooden-table-11532-large.mp4"
         ];
 
         window.onload = function() {
