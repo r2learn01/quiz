@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizzes</title>
+    <title>Quizzes - Interactive Learning</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -92,7 +92,7 @@
 
         .main-container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1250px;
             padding: 20px;
             z-index: 1;
             display: flex;
@@ -241,11 +241,32 @@
             text-shadow: 0 0 10px var(--hover-shadow);
         }
 
-        @media (max-width: 650px) {
+        /* @media (max-width: 650px) {
             h1 { font-size: 2.8rem; }
-            .card { width: 100%; max-width: 320px; } /* الكارت يملى الشاشة في الموبايل */
+            .card { width: 100%; max-width: 320px; } 
             .card-container { gap: 20px; }
+        } */
+
+
+
+        @media (max-width: 650px) {
+            .card-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* عمودين متساويين */
+                gap: 15px; /* مسافة أصغر لتناسب الشاشة */
+                padding: 10px;
+            }
+            .card {
+                width: 100%; /* تأخذ عرض العمود بالكامل */
+                padding: 25px 10px;
+                border-radius: 15px;
+            }
+            .card i { font-size: 2.2rem; margin-bottom: 12px; }
+            .card h3 { font-size: 0.95rem; }
+            header { margin: 20px 0 30px 0; }
         }
+
+       
     </style>
 </head>
 <body>
