@@ -3,201 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizzes</title>
+    <title>Quizzes - Interactive Learning</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* تعريف الألوان الأساسية للوضع الداكن المريح للعين (أسود عميق مع سيان متوهج) */
         :root {
-            --primary-color: #00d4ff;
-            --bg-overlay: rgba(0, 0, 0, 0.75);
-            --card-bg: rgba(255, 255, 255, 0.1);
-            --text-color: #ffffff;
-            --sub-text: #cccccc;
-            --footer-bg: rgba(0, 0, 0, 0.5);
+            --bg-gradient-1: #050505; /* أسود عميق جداً */
+            --bg-gradient-2: #121212; /* رمادي داكن هادي */
+            --bg-gradient-3: #0a0a0a; /* أسود ليلي */
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc; /* أبيض ناصع وناعم لراحة العين */
+            --text-muted: #94a3b8; /* رمادي فاتح للنصوص الفرعية */
+            --accent-color: #00e5ff; /* أزرق سيان ناعم وجذاب جداً */
+            --hover-bg: rgba(255, 255, 255, 0.04); /* لون الهوفر الهادي */
+            --hover-border: rgba(0, 229, 255, 0.4); /* حدود بلون الأكسنت عند الهوفر */
+            --hover-shadow: rgba(0, 229, 255, 0.15); /* توهج (Glow) خفيف ومريح */
+            --paper-color: rgba(255, 255, 255, 0.03);
         }
 
-        /* تحسينات الوضع الفاتح لضمان ظهور الكلام */
+        /* الوضع الفاتح (زي ما هو) */
         .light-mode {
-            --bg-overlay: rgba(255, 255, 255, 0.9); /* خلفية بيضاء شبه معتمة */
-            --card-bg: rgba(0, 0, 0, 0.05);
-            --text-color: #1a1a1a; /* نص أسود غامق */
-            --sub-text: #444444;
-            --primary-color: #0066cc;
-            --footer-bg: rgba(255, 255, 255, 0.8);
+            --bg-gradient-1: #f4f6f9;
+            --bg-gradient-2: #e9ecef;
+            --bg-gradient-3: #f1f3f5;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(0, 0, 0, 0.05);
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --accent-color: #4299e1;
+            --hover-bg: rgba(255, 255, 255, 1);
+            --hover-border: rgba(66, 153, 225, 0.4);
+            --hover-shadow: rgba(66, 153, 225, 0.1);
+            --paper-color: rgba(0, 0, 0, 0.05);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* تطبيق الخط الجديد هنا */
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: #000;
-            color: var(--text-color);
-            transition: background 0.3s ease, color 0.3s ease;
+            background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
+            background-size: 200% 200%;
+            /* الحل هنا: تثبيت الخلفية لمنع ظهور التقطيع الأبيض أثناء السكرول */
+            background-attachment: fixed;
+            animation: gradientMove 20s ease infinite;
+            color: var(--text-main);
+            transition: background 0.5s ease, color 0.5s ease;
+            min-height: 100vh;
             overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        /* فيديو الخلفية */
-        .video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            object-fit: cover;
-        }
-
-        .main-container {
-            position: relative;
-            min-height: 100vh;
-            background: var(--bg-overlay);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            z-index: 1;
         }
 
-        /* أنميشن الأوراق البسيطة */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* أنميشن الأوراق بشكل أهدى وأخف */
         .falling-paper {
             position: fixed;
-            width: 15px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            z-index: -1;
+            width: 10px;
+            height: 14px;
+            background: var(--paper-color);
+            z-index: 0;
             pointer-events: none;
+            border-radius: 2px;
             animation: fall linear infinite;
         }
+
         @keyframes fall {
-            from { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            50% { opacity: 0.5; }
-            to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg) translateX(50px); opacity: 0; }
         }
 
-        /* الهيدر */
-        header {
+        .main-container {
             width: 100%;
-            max-width: 1000px;
-            text-align: center;
-            margin-top: 40px;
-            margin-bottom: 50px;
+            max-width: 1100px;
+            padding: 20px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .top-nav {
-            width: 100%;
             display: flex;
             justify-content: flex-end;
-            max-width: 1100px;
+            padding: 15px 0;
         }
 
         #theme-toggle {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--card-border);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            background: var(--card-bg);
+            /* تأثير إضاءة خفيف للزر */
+            box-shadow: 0 0 10px var(--hover-shadow);
+        }
+
+        header {
+            text-align: center;
+            margin: 30px 0 50px 0;
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        h1 span {
+            color: var(--accent-color);
         }
 
         .description {
             font-size: 1.1rem;
-            color: var(--sub-text);
-            max-width: 600px;
+            line-height: 1.7;
+            color: var(--text-muted);
+            max-width: 550px;
             margin: 0 auto;
+            font-weight: 300; /* جعل الوصف أنعم مع الخط الجديد */
         }
 
-        /* شبكة المواد */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+        /* توزيع الكروت المرن والمريح */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
             width: 100%;
-            max-width: 1100px;
             margin-bottom: 80px;
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(128, 128, 128, 0.2);
-            padding: 30px 15px;
-            border-radius: 15px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            width: 280px; /* عرض ثابت للكارت عشان التوزيع يبقى متناسق */
+            padding: 35px 20px;
+            border-radius: 16px;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.3s ease, background 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* أنميشن أنعم للكارت */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* الهوفر الهادي والمريح للعين مع تأثير الـ Glow */
         .card:hover {
-            transform: translateY(-5px);
-            background: var(--primary-color);
-            color: #fff;
+            transform: translateY(-8px);
+            background: var(--hover-bg);
+            border-color: var(--hover-border);
+            box-shadow: 0 12px 25px var(--hover-shadow);
         }
 
         .card i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover i {
+            color: var(--accent-color);
+            transform: scale(1.1); /* تكبير الأيقونة سيكا مع الهوفر */
         }
 
         .card h3 {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
+            font-weight: 500; /* وزن خط مريح */
+            color: var(--text-main);
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
         }
 
-        /* الفوتر */
         footer {
             margin-top: auto;
+            text-align: center;
+            padding: 30px 20px;
             width: 100%;
-            padding: 20px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-content {
             display: flex;
-            justify-content: center;
-            background: var(--footer-bg);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(128, 128, 128, 0.2);
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
         }
 
         .footer-link {
             text-decoration: none;
-            color: var(--primary-color);
-            font-weight: bold;
-            display: inline-block;
-            margin-left:10px ;
-            gap: 12px;
-            font-size: 1.4rem;
-            transition: all .5s ease;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
         }
 
         .footer-link:hover {
-            text-decoration: none;
-            transform: scale(1.2);
-            
+            color: var(--accent-color);
+            transform: scale(1.15);
+            /* توهج خفيف لأيقونة التليجرام */
+            text-shadow: 0 0 10px var(--hover-shadow);
         }
 
-        /* التوافق مع الجوال */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .grid { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 650px) {
+            h1 { font-size: 2.8rem; }
+            .card { width: 100%; max-width: 320px; } /* الكارت يملى الشاشة في الموبايل */
+            .card-container { gap: 20px; }
         }
     </style>
 </head>
 <body>
-
-    <video autoplay muted loop class="video-bg" id="bgVideo">
-        <source src="" type="video/mp4">
-    </video>
 
     <div class="main-container">
         <nav class="top-nav">
@@ -205,16 +256,15 @@
         </nav>
 
         <header>
-            <h1>Quizzes</h1>
+            <h1>Quiz<span>zes</span></h1>
             <p class="description">
-                Welcome to the ultimate interactive collection of quizzes. 
-                Everything you need to study in one fun and organized place.
+                Here You Will Find Quizzes For Each Subject Taken From Audio Recordings, PDFs, And Things They Focused On, Without Tire Yourself Searching Through Question Banks.
             </p>
         </header>
 
-        <main class="grid">
+        <main class="card-container">
             <div class="card" onclick="location.href='organic.html'">
-               <i class="fa-duotone fa-regular fa-flask-vial"></i>
+                <i class="fas fa-flask"></i>
                 <h3>Organic II</h3>
             </div>
             <div class="card" onclick="location.href='analytical.html'">
@@ -244,58 +294,43 @@
         </main>
 
         <footer>
-            <p>If you have any suggestions, contact me:</p>
-            <a href="https://t.me/YourUsername" class="footer-link" target="_blank">
-                <i class="fab fa-telegram"></i> 
-            </a>
+            <div class="footer-content">
+                <p>You Have Any Suggestions?! Contact Me:</p>
+                <a href="https://t.me/hazem_py" class="footer-link" target="_blank">
+                    <i class="fab fa-telegram"></i> 
+                </a>
+            </div>
         </footer>
     </div>
 
     <script>
-        // 1. نظام الفيديوهات العشوائية عند الريفرش
-        const videoSources = [
-            "https://www.freepik.com/free-video/stationary-shot-silver-confetti-falling-against-grey-background_154581#fromView=keyword&page=1&position=0&uuid=33c78fd7-cd03-4ce2-98e2-140d79866e6b",
-            // "https://assets.mixkit.co/videos/preview/mixkit-studying-hard-at-a-desk-40058-large.mp4",
-            // "https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-person-writing-on-a-notebook-41132-large.mp4",
-            // "https://assets.mixkit.co/videos/preview/mixkit-searching-for-information-in-the-library-42774-large.mp4",
-            // "https://assets.mixkit.co/videos/preview/mixkit-books-stack-on-a-wooden-table-11532-large.mp4"
-        ];
-
-        window.onload = function() {
-            const video = document.getElementById('bgVideo');
-            const randomSource = videoSources[Math.floor(Math.random() * videoSources.length)];
-            video.src = randomSource;
-            video.load();
-        };
-
-        // 2. تبديل الوضع (ليلي / فاتح)
+        // نظام تبديل الوضع (ليلي / فاتح)
         const themeToggle = document.getElementById('theme-toggle');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
             const icon = themeToggle.querySelector('i');
-            if (document.body.classList.contains('light-mode')) {
-                icon.className = 'fas fa-moon';
-            } else {
-                icon.className = 'fas fa-sun';
-            }
+            icon.className = document.body.classList.contains('light-mode') ? 'fas fa-moon' : 'fas fa-sun';
         });
 
-        // 3. أنميشن الأوراق المتطايرة (بسيطة وخفيفة)
+        // نظام أنميشن الأوراق المتساقطة
         function createPaper() {
             const paper = document.createElement('div');
             paper.className = 'falling-paper';
             paper.style.left = Math.random() * 100 + 'vw';
-            paper.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            paper.style.opacity = Math.random() * 0.3;
+            
+            // سرعات هادية جداً للورق
+            const duration = (Math.random() * 8 + 8); 
+            paper.style.animationDuration = duration + 's';
+            
             document.body.appendChild(paper);
 
             setTimeout(() => {
                 paper.remove();
-            }, 10000);
+            }, duration * 1000);
         }
 
-        // إنشاء ورقة كل ثانية (خفيفة على المتصفح)
-        setInterval(createPaper, 1000);
+        // إنشاء ورقة كل 1.2 ثانية عشان متزحمش الشاشة
+        setInterval(createPaper, 1200);
     </script>
 </body>
 </html>
