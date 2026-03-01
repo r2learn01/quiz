@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizzes - Interactive Learning</title>
+    <title>Quizzes</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -13,17 +13,17 @@
         /* تعريف الألوان الأساسية للوضع الداكن المريح للعين (أسود عميق مع سيان متوهج) */
         :root {
             --bg-gradient-1: #050505; /* أسود عميق جداً */
-            --bg-gradient-2: #121212; /* رمادي داكن هادي */
-            --bg-gradient-3: #0a0a0a; /* أسود ليلي */
+            --bg-gradient-2: #17181a; /* رمادي داكن هادي */
+            --bg-gradient-3: #070818; /* أسود ليلي */
             --card-bg: rgba(255, 255, 255, 0.02);
             --card-border: rgba(255, 255, 255, 0.05);
             --text-main: #f8fafc; /* أبيض ناصع وناعم لراحة العين */
             --text-muted: #94a3b8; /* رمادي فاتح للنصوص الفرعية */
-            --accent-color: #00e5ff; /* أزرق سيان ناعم وجذاب جداً */
+            --accent-color: #0adaf1c7; /* أزرق سيان ناعم وجذاب جداً */
             --hover-bg: rgba(255, 255, 255, 0.04); /* لون الهوفر الهادي */
             --hover-border: rgba(0, 229, 255, 0.4); /* حدود بلون الأكسنت عند الهوفر */
             --hover-shadow: rgba(0, 229, 255, 0.15); /* توهج (Glow) خفيف ومريح */
-            --paper-color: rgba(255, 255, 255, 0.03);
+            --paper-color: rgba(255, 255, 255, 0.192);
         }
 
         /* الوضع الفاتح (زي ما هو) */
@@ -39,7 +39,7 @@
             --hover-bg: rgba(255, 255, 255, 1);
             --hover-border: rgba(66, 153, 225, 0.4);
             --hover-shadow: rgba(66, 153, 225, 0.1);
-            --paper-color: rgba(0, 0, 0, 0.05);
+            --paper-color: rgba(54, 52, 52, 0.452);
         }
 
         * {
@@ -51,7 +51,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
+            background: linear-gradient(180deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
             background-size: 200% 200%;
             /* الحل هنا: تثبيت الخلفية لمنع ظهور التقطيع الأبيض أثناء السكرول */
             background-attachment: fixed;
@@ -329,8 +329,8 @@
             }, duration * 1000);
         }
 
-        // إنشاء ورقة كل 1.2 ثانية عشان متزحمش الشاشة
-        setInterval(createPaper, 1200);
+        // إنشاء الاوراق
+        setInterval(createPaper, 500);
     </script>
 </body>
 </html>
