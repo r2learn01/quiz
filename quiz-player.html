@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* نفس الألوان والتصميم الأساسي */
         :root {
             --bg-gradient-1: #050505;
             --bg-gradient-2: #17181a;
@@ -19,12 +18,11 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent-color: #0adaf1c7;
-            --correct-color: #10b981; /* لون الإجابة الصح (أخضر) */
-            --wrong-color: #ef4444;   /* لون الإجابة الغلط (أحمر) */
+            --correct-color: #10b981; 
+            --wrong-color: #ef4444;   
             --hover-bg: rgba(255, 255, 255, 0.04);
             --hover-border: rgba(0, 229, 255, 0.4);
             --hover-shadow: rgba(0, 229, 255, 0.15);
-            --paper-color: rgba(255, 255, 255, 0.192);
         }
 
         .light-mode {
@@ -39,7 +37,6 @@
             --hover-bg: rgba(255, 255, 255, 1);
             --hover-border: rgba(66, 153, 225, 0.4);
             --hover-shadow: rgba(66, 153, 225, 0.1);
-            --paper-color: rgba(54, 52, 52, 0.452);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -49,7 +46,8 @@
             background-attachment: fixed;
             color: var(--text-main);
             transition: all 0.5s ease;
-            min-height: 100vh;
+            height: 100vh; /* منع سكرول الصفحة بالكامل */
+            overflow: hidden; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -62,6 +60,7 @@
             justify-content: space-between;
             padding: 20px;
             z-index: 10;
+            flex-shrink: 0;
         }
 
         .icon-btn {
@@ -92,50 +91,73 @@
             backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 40px;
-            margin-top: 20px;
+            padding: 30px;
+            margin-top: 10px;
             z-index: 1;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            /* التعديل السحري: طول متجاوب عشان الكارت ميخرجش برا الشاشة */
+            max-height: calc(100vh - 100px); 
+            display: flex;
+            flex-direction: column;
+        }
+
+        #quiz-screen {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden; /* عشان المحتوى ميهربش برا الشاشة */
         }
 
         .quiz-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid var(--card-border);
+            flex-shrink: 0;
         }
 
-        .quiz-title { font-size: 1.2rem; font-weight: 600; color: var(--accent-color); }
-        .question-tracker { font-size: 1rem; color: var(--text-muted); }
+        .quiz-title { font-size: 1.1rem; font-weight: 600; color: var(--accent-color); }
+        .question-tracker { font-size: 0.95rem; color: var(--text-muted); }
 
         .question-text {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 500;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             line-height: 1.5;
+            flex-shrink: 0;
         }
 
         .options-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
+            /* السكرول بيحصل هنا بس لو الاختيارات كتير */
+            overflow-y: auto; 
+            padding-right: 5px;
+            margin-bottom: 15px;
+            flex-grow: 1; 
         }
+
+        /* تجميل شريط السكرول الداخلي */
+        .options-list::-webkit-scrollbar { width: 6px; }
+        .options-list::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 10px; }
 
         .option-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--card-border);
             color: var(--text-main);
-            padding: 18px 20px;
+            padding: 16px 20px;
             border-radius: 12px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             text-align: left;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .option-btn:hover:not(:disabled) {
@@ -144,17 +166,8 @@
             transform: translateX(5px);
         }
 
-        /* تنسيقات الإجابة الصح والغلط */
-        .option-btn.correct {
-            background: rgba(16, 185, 129, 0.1);
-            border-color: var(--correct-color);
-            color: var(--correct-color);
-        }
-        .option-btn.wrong {
-            background: rgba(239, 68, 68, 0.1);
-            border-color: var(--wrong-color);
-            color: var(--wrong-color);
-        }
+        .option-btn.correct { background: rgba(16, 185, 129, 0.1); border-color: var(--correct-color); color: var(--correct-color); }
+        .option-btn.wrong { background: rgba(239, 68, 68, 0.1); border-color: var(--wrong-color); color: var(--wrong-color); }
 
         .next-btn {
             background: var(--accent-color);
@@ -165,14 +178,14 @@
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 30px;
             width: 100%;
-            display: none; /* مخفي لحد ما يجاوب */
+            display: none;
             transition: 0.3s;
+            flex-shrink: 0; /* بيمنع الزرار إنه يصغر */
+            margin-top: auto; /* بيزقه لأسفل الكارت */
         }
         .next-btn:hover { box-shadow: 0 0 15px var(--accent-color); }
 
-        /* شاشة النتيجة */
         .result-screen { text-align: center; display: none; }
         .score-circle {
             width: 150px;
@@ -189,10 +202,17 @@
             box-shadow: 0 0 30px var(--hover-shadow);
         }
 
+        /* تظبيطات الموبايل عشان الشاشة الصغيرة */
         @media (max-width: 600px) {
-            .quiz-container { padding: 25px 15px; border-radius: 15px; width: 95%; }
-            .question-text { font-size: 1.2rem; }
-            .option-btn { font-size: 1rem; padding: 15px; }
+            .quiz-container { 
+                padding: 20px 15px; 
+                border-radius: 15px; 
+                width: 95%; 
+                max-height: calc(100vh - 80px); /* مساحة أكبر للموبايل */
+            }
+            .question-text { font-size: 1.1rem; margin-bottom: 15px; }
+            .option-btn { font-size: 1rem; padding: 12px 15px; }
+            .next-btn { padding: 12px 20px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -234,7 +254,6 @@
     </div>
 
     <script>
-        // نظام تبديل الوضع (ليلي / فاتح)
         const themeToggle = document.getElementById('theme-toggle');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
@@ -242,19 +261,16 @@
             icon.className = document.body.classList.contains('light-mode') ? 'fas fa-moon' : 'fas fa-sun';
         });
 
-        // ==========================================
-        // قاعدة بيانات الأسئلة (المخزن)
-        // ==========================================
+        // قاعدة بيانات الأسئلة
         const quizDatabase = {
-            "org1": {
-                title: "Quiz I",
+            "org_ch1": {
+                title: "Chapter 1: Alcohols & Phenols",
                 questions: [
                     { q: "What is the general functional group of Alcohols?", options: ["-CHO", "-OH", "-COOH", "-NH2"], correct: 1 },
                     { q: "Which of the following is more acidic?", options: ["Ethanol", "Phenol", "Methanol", "Cyclohexanol"], correct: 1 },
                     { q: "Primary alcohols can be oxidized to form:", options: ["Ketones", "Ethers", "Aldehydes then Carboxylic acids", "Esters"], correct: 2 }
                 ]
             },
-          
             "ana_ch1": {
                 title: "Precipitation Titrations",
                 questions: [
@@ -263,11 +279,6 @@
             }
         };
 
-        // ==========================================
-        // المحرك (The Engine)
-        // ==========================================
-        
-        // استخراج الـ ID بتاع الكويز من الرابط
         const urlParams = new URLSearchParams(window.location.search);
         const currentQuizId = urlParams.get('quiz');
         
@@ -276,14 +287,12 @@
         let score = 0;
         let answered = false;
 
-        // تهيئة الكويز
         function initQuiz() {
             if (currentQuizId && quizDatabase[currentQuizId]) {
                 const quizData = quizDatabase[currentQuizId];
                 document.getElementById('quiz-title').textContent = quizData.title;
                 questions = quizData.questions;
                 document.getElementById('total-q-num').textContent = questions.length;
-                
                 loadQuestion();
             } else {
                 document.getElementById('question-text').textContent = "Quiz not found! Please go back.";
@@ -291,7 +300,6 @@
             }
         }
 
-        // تحميل السؤال
         function loadQuestion() {
             answered = false;
             document.getElementById('next-btn').style.display = 'none';
@@ -301,37 +309,35 @@
             document.getElementById('question-text').textContent = currentQ.q;
             
             const optionsList = document.getElementById('options-list');
-            optionsList.innerHTML = ''; // مسح الاختيارات القديمة
+            optionsList.innerHTML = ''; 
             
             currentQ.options.forEach((optionText, index) => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
                 btn.innerHTML = `${optionText} <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0;"></i>`;
-                // لما يضغط على إجابة
                 btn.onclick = () => checkAnswer(index, btn);
                 optionsList.appendChild(btn);
             });
+            
+            // التأكد إن السكرول يرجع لأول الاختيارات مع كل سؤال جديد
+            optionsList.scrollTop = 0;
         }
 
-        // فحص الإجابة
         function checkAnswer(selectedIndex, selectedBtn) {
-            if (answered) return; // عشان ميجاوبش مرتين في نفس السؤال
+            if (answered) return; 
             answered = true;
             
             const currentQ = questions[currentQuestionIndex];
             const allBtns = document.querySelectorAll('.option-btn');
             
-            // قفل كل الزراير عشان ميغيرش رأيه
             allBtns.forEach(btn => btn.disabled = true);
             
-            // لو الإجابة صح
             if (selectedIndex === currentQ.correct) {
                 selectedBtn.classList.add('correct');
                 selectedBtn.querySelector('i').className = "fas fa-check-circle";
                 selectedBtn.querySelector('i').style.opacity = "1";
                 score++;
             } else {
-                // لو الإجابة غلط (لون اللي اختاره أحمر، والصح أخضر)
                 selectedBtn.classList.add('wrong');
                 selectedBtn.querySelector('i').className = "fas fa-times-circle";
                 selectedBtn.querySelector('i').style.opacity = "1";
@@ -342,7 +348,6 @@
                 correctBtn.querySelector('i').style.opacity = "1";
             }
             
-            // إظهار زرار الـ Next
             const nextBtn = document.getElementById('next-btn');
             if (currentQuestionIndex === questions.length - 1) {
                 nextBtn.innerHTML = "Show Results <i class='fas fa-flag-checkered'></i>";
@@ -350,7 +355,6 @@
             nextBtn.style.display = 'block';
         }
 
-        // الانتقال للسؤال التالي أو النتيجة
         function nextQuestion() {
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
@@ -360,7 +364,6 @@
             }
         }
 
-        // إظهار النتيجة النهائية
         function showResults() {
             document.getElementById('quiz-screen').style.display = 'none';
             document.getElementById('result-screen').style.display = 'block';
@@ -369,7 +372,6 @@
             document.getElementById('final-score').textContent = percentage;
         }
 
-        // تشغيل الكويز أول ما الصفحة تفتح
         window.onload = initQuiz;
     </script>
 </body>
