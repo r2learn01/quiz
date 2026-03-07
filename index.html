@@ -129,6 +129,7 @@
         header {
             text-align: center;
             margin: 30px 0 50px 0;
+            min-height: 130px; /* تم إضافته عشان الصفحة متهتزش وقت الكتابة */
         }
 
         h1 {
@@ -143,13 +144,27 @@
             color: var(--accent-color);
         }
 
+        /* تنسيقات الـ Typewriter */
         .description {
             font-size: 1.1rem;
             line-height: 1.7;
             color: var(--text-muted);
             max-width: 550px;
             margin: 0 auto;
-            font-weight: 300; /* جعل الوصف أنعم مع الخط الجديد */
+            font-weight: 400;
+        }
+
+        /* مؤشر الكتابة للآلة الكاتبة */
+        .description::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+            color: var(--accent-color);
+            margin-left: 3px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         /* توزيع الكروت المرن والمريح */
@@ -241,14 +256,6 @@
             text-shadow: 0 0 10px var(--hover-shadow);
         }
 
-        /* @media (max-width: 650px) {
-            h1 { font-size: 2.8rem; }
-            .card { width: 100%; max-width: 320px; } 
-            .card-container { gap: 20px; }
-        } */
-
-
-
         @media (max-width: 650px) {
             .card-container {
                 display: grid;
@@ -265,8 +272,6 @@
             .card h3 { font-size: 0.95rem; }
             header { margin: 20px 0 30px 0; }
         }
-
-       
     </style>
 </head>
 <body>
@@ -278,9 +283,7 @@
 
         <header>
             <h1>Quiz<span>zes</span></h1>
-            <p class="description">
-                Here You Will Find Quizzes For Each Subject Taken From Audio Recordings, PDFs, And Things They Focused On, Without Tire Yourself Searching Through Question Banks.
-            </p>
+            <p class="description" id="typewriter-text"></p>
         </header>
 
         <main class="card-container">
@@ -352,6 +355,49 @@
 
         // إنشاء الاوراق
         setInterval(createPaper, 500);
+
+        // نظام الآلة الكاتبة (Typewriter Effect) باللغة الإنجليزية
+        const phrases = [
+            "Interactive quizzes, fun and never boring! 🚀",
+            "Highly expected questions for your exams. 🎯",
+            "Focused points from audio recordings & PDFs. 📖",
+            "Save your time and study smart without searching! 💡"
+        ];
+        
+        let currentPhraseIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter-text');
+
+        function typeEffect() {
+            const currentPhrase = phrases[currentPhraseIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+            } else {
+                typewriterElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+            }
+
+            let typingSpeed = isDeleting ? 20 : 50; // سرعة الكتابة والمسح
+
+            if (!isDeleting && currentCharIndex === currentPhrase.length) {
+                typingSpeed = 2000; // الانتظار بعد كتابة الجملة
+                isDeleting = true;
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                typingSpeed = 500; // الانتظار قبل الجملة الجديدة
+            }
+
+            setTimeout(typeEffect, typingSpeed);
+        }
+
+        // تشغيل تأثير الآلة الكاتبة بعد تحميل الصفحة
+        window.onload = () => {
+            setTimeout(typeEffect, 500);
+        };
     </script>
 </body>
 </html>
