@@ -363,7 +363,7 @@
             "Interactive, Never Boring 🚀",
             "Expected For Exams 🎯",
             "From Recordings & PDFs 📖",
-            "Save Your Time & Study Smart 💡"
+            "Save Time 👉 Study Smart 💡"
         ];
         
         let currentPhraseIndex = 0;
@@ -385,7 +385,7 @@
             let typingSpeed = isDeleting ? 20 : 50; // سرعة الكتابة والمسح
 
             if (!isDeleting && currentCharIndex === currentPhrase.length) {
-                typingSpeed = 2000; // الانتظار بعد كتابة الجملة
+                typingSpeed = 1200; // الانتظار بعد كتابة الجملة
                 isDeleting = true;
             } else if (isDeleting && currentCharIndex === 0) {
                 isDeleting = false;
