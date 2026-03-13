@@ -390,57 +390,78 @@
             
             "ana1": {
                 title: "Quiz I | Midterm Content",
-                questions: [
-                    { 
-                        q: "Which of the following is a characteristic requirement for a primary standard?", 
-                        options: ["Low equivalent weight", "High purity and definite known composition", "Must be standardized before use", "Highly hygroscopic"], 
-                        correct: 1,
-                        explanation: "A primary standard must be extremely pure (99.9%+) and have a stable, known composition so that the number of moles can be calculated accurately by weight.",
-                        source: "Lecture 1: Introduction to Volumetric Analysis"
-                    },
-                    { 
-                        q: "The pH of a salt solution formed from a strong acid and a weak base (e.g., NH4Cl) is:", 
-                        options: ["Exactly 7", "Less than 7 (acidic)", "Greater than 7 (alkaline)", "Depends on temperature"], 
-                        correct: 1,
-                        explanation: "NH4Cl dissociates into NH4+ and Cl-. The NH4+ (conjugate acid of a weak base) reacts with water (hydrolysis) to produce H3O+, making the solution acidic.",
-                        source: "Lecture 3: pH of Salt Solutions"
-                    },
-                    { 
-                        q: "A buffer solution shows its maximum buffering capacity when:", 
-                        options: ["pH = pKw", "pH = pKa ± 1", "pH = pKa", "Salt concentration is zero"], 
-                        correct: 2,
-                        explanation: "According to the Henderson-Hasselbalch equation, when [Salt] = [Acid], the log term becomes zero, and pH = pKa. This is where the buffer is most resistant to change.",
-                        source: "Lecture 3: Buffer Solutions"
-                    },
-                    { 
-                        q: "During the titration of boric acid, glycerol is added to:", 
-                        options: ["Act as an indicator", "Prevent precipitation", "Enhance its acidity", "Neutralize the base"], 
-                        correct: 2,
-                        explanation: "Boric acid is too weak to be titrated directly. Glycerol reacts with it to form a complex 'Glyceroboric acid' which is a much stronger acid and can be titrated with NaOH.",
-                        source: "Lecture 4: Titration of Weak Acids"
-                    },
-                    { 
-                        q: "In the double indicator titration of Na2CO3, the first end point (pH 8.3) is detected by:", 
-                        options: ["Methyl orange", "Phenolphthalein", "Bromothymol blue", "Litmus"], 
-                        correct: 1,
-                        explanation: "Phenolphthalein has a range of 8.2-10. It changes from pink to colorless exactly when Na2CO3 is converted to NaHCO3 (the first half-neutralization).",
-                        source: "Lecture 4: Mixtures of Carbonates"
-                    },
-                    { 
-                        q: "Why is ether used in the biphasic titration of sodium salicylate?", 
-                        options: ["As a solvent for salt", "To extract formed salicylic acid", "As a primary standard", "To change pH"], 
-                        correct: 1,
-                        explanation: "Salicylic acid is insoluble in water but highly soluble in ether. Removing it from the water layer prevents a 'false early end point' caused by the acid's own acidity.",
-                        source: "Lecture 5: Biphasic Titrations"
-                    },
-                    { 
-                        q: "A blank determination is mainly carried out in back titrations to:", 
-                        options: ["Speed up reaction", "Minimize titration errors", "Dissolve the sample", "Standardize HCl"], 
-                        correct: 1,
-                        explanation: "A blank titration is done without the sample to account for any impurities in reagents or environmental factors, ensuring the 'excess' titrant calculation is precise.",
-                        source: "Lecture 5: Residual Titrations"
-                    }
-                ]
+                questions:[
+                { 
+                q: "In the titration of phosphoric acid (H3PO4) with NaOH, why is neutral CaCl2 sometimes added from the start of the titration?", 
+                options: ["To act as a secondary indicator", "To prevent the hydrolysis of the phosphate salt", "To precipitate the phosphate radical and release an equivalent amount of HCl, allowing a single inflection for all three protons", "To change the pH range of the indicator used"], 
+                correct: 2,
+                explanation: "Phosphoric acid is a tribasic acid, but its third proton is too weak to be titrated directly (pK3 = 12.32). Adding CaCl2 precipitates Ca3(PO4)2 and releases an equivalent amount of strong HCl, which can be easily titrated to determine all three protons at once.",
+                source: "Lecture 4: Polybasic acid - strong base titration"
+            },
+            { 
+                q: "In the formol titration of ammonium salts (an indirect titration method), formaldehyde is added to the sample. What is the actual species being titrated with the standard NaOH?", 
+                options: ["The unreacted formaldehyde", "The hexamethylenetetramine formed", "The ammonium hydroxide formed", "The hydrochloric acid (HCl) liberated during the reaction"], 
+                correct: 3,
+                explanation: "Formaldehyde reacts with ammonium chloride to form hexamethylenetetramine and liberates HCl (4NH4Cl + 6HCHO -> (CH2)6N4 + 4HCl + 6H2O). The liberated strong acid (HCl) is what is actually titrated with NaOH.",
+                source: "Lecture 6: Determination of Ammonium Salts by Formol titration"
+            },
+            { 
+                q: "When titrating a very weak base like aniline, why is glacial acetic acid used as a solvent instead of water?", 
+                options: ["Because water acts as a base and competes with the sample, whereas acetic acid exerts a levelling effect that enhances the basicity of aniline", "Because aniline is highly soluble in water and might evaporate", "Because acetic acid is an aprotic solvent that prevents side reactions", "Because it exerts a differentiating effect that lowers the basicity of aniline"], 
+                correct: 0,
+                explanation: "Water is amphiprotic and competes with weak bases. Acetic acid is a protogenic (acidic) solvent that donates protons. This 'levels' the weak base, enhancing its ability to accept protons and making the endpoint much sharper.",
+                source: "Lecture 6: Non-Aqueous Titrations - Role of Solvent"
+            },
+            { 
+                q: "During the biphasic titration of sodium salicylate with standard HCl, the liberated salicylic acid is extracted into an immiscible organic solvent (ether). What would happen if this extraction step is omitted?", 
+                options: ["The reaction would stop prematurely due to precipitation", "The liberated acid would lower the pH of the aqueous layer, causing a false and early end point", "The indicator (bromophenol blue) would be permanently destroyed", "The sodium salicylate would become insoluble"], 
+                correct: 1,
+                explanation: "Salicylic acid is poorly soluble in water and acidic. If left in the aqueous phase, its own acidity would prematurely change the indicator's color from blue to pale green before all the sodium salicylate has actually reacted with the HCl titrant.",
+                source: "Lecture 5: Biphasic Titrations"
+            },
+            { 
+                q: "In the residual (back) titration of insoluble calcium carbonate (CaCO3) with standard HCl, why must the mixture be boiled before back-titrating the excess HCl with NaOH?", 
+                options: ["To dissolve the indicator completely", "To evaporate the water and concentrate the HCl", "To remove the dissolved CO2, which could react with the NaOH titrant and alter the end point", "To accelerate the decomposition of the unreacted HCl"], 
+                correct: 2,
+                explanation: "The reaction between CaCO3 and HCl produces CO2 gas. Since CO2 forms a weak acid in water (carbonic acid), it would consume some of the standard NaOH during the back-titration, leading to an incorrect calculation of the residual HCl.",
+                source: "Lecture 5: Determination of Insoluble Salts (CaCO3)"
+            },
+            { 
+                q: "What is the primary advantage of using a 'mixed indicator' (e.g., neutral red and methylene blue) over a single color indicator in certain weak acid-weak base titrations?", 
+                options: ["It provides a sharper, contrasting color change over a very narrow and limited pH range", "It prevents the precipitation of the analyte", "It allows titration over a very wide pH range (0 to 14)", "It makes the solution completely colorless at the equivalence point"], 
+                correct: 0,
+                explanation: "Mixed indicators combine two dyes with overlapping pH ranges to produce a highly contrasting color change (e.g., from violet to green) in a very narrow interval, making it easier to detect the subtle endpoint in weak acid-weak base titrations.",
+                source: "Lecture 4: Types of Indicators - Mixed Indicators"
+            },
+            { 
+                q: "Which of the following statements represents the 'Maximum Buffer Capacity' condition?", 
+                options: ["When the concentration of the salt is exactly 10 times the concentration of the acid", "When the buffer is diluted to an infinite volume", "When the pH of the solution is exactly equal to the pKa of the weak acid", "When a strong acid completely neutralizes the weak base"], 
+                correct: 2,
+                explanation: "According to the Henderson-Hasselbalch equation (pH = pKa + log[salt]/[acid]), maximum buffer capacity is achieved when the concentration of the salt equals the concentration of the acid ([salt] = [acid]). At this point, log(1) = 0, so pH = pKa.",
+                source: "Lecture 3: Buffer Capacity"
+            },
+            { 
+                q: "When determining an aldehyde (like benzaldehyde) using the hydroxylamine hydrochloride method, the quantity of the aldehyde is calculated based on:", 
+                options: ["The amount of water produced in the reaction", "The volume of standard acid required to neutralize the oxime formed", "The excess unreacted hydroxylamine hydrochloride", "The volume of standard NaOH required to titrate the liberated HCl"], 
+                correct: 3,
+                explanation: "Aldehydes react with hydroxylamine hydrochloride to form an oxime, water, and liberate an equivalent amount of HCl. This liberated HCl is then titrated with a standard NaOH solution to determine the original aldehyde concentration.",
+                source: "Lecture 6: Indirect Titration - Determination of Aldehydes & Ketones"
+            },
+            { 
+                q: "How does the Brönsted-Lowry theory differ significantly from the Arrhenius theory regarding the nature of acid-base reactions?", 
+                options: ["Brönsted-Lowry focuses exclusively on electron pair donation and acceptance", "Brönsted-Lowry involves the solvent in the reaction as an active proton donor or acceptor (e.g., forming H3O+)", "Brönsted-Lowry requires the solvent to be strictly water", "Arrhenius theory accounts for non-aqueous solvents while Brönsted-Lowry does not"], 
+                correct: 1,
+                explanation: "Arrhenius defined acids/bases strictly by their ability to yield H+ or OH- in water. Brönsted-Lowry defined them as proton donors/acceptors and recognized that the solvent (like water) actively participates in the reaction either as a weak base (accepting a proton) or a weak acid.",
+                source: "Lecture 1: Acid-Base Theories"
+            },
+            { 
+                q: "In the titration of a weak base (e.g., NH4OH) with a strong acid (e.g., HCl), the pH of the solution midway to the equivalence point is primarily governed by:", 
+                options: ["The complete hydrolysis of the formed salt", "The properties of a basic buffer formed by the remaining weak base and its conjugate acid salt", "The concentration of the strong acid alone", "The Kw of water exclusively"], 
+                correct: 1,
+                explanation: "Before reaching the equivalence point, the added strong acid neutralizes some of the weak base to form a salt (NH4Cl). The mixture of the remaining unreacted weak base (NH4OH) and the formed salt (NH4Cl) acts as a basic buffer, which dictates the pH.",
+                source: "Lecture 3/4: Titration curve of Weak base-strong acid"
+            }
+        ]
             }
         };
 
