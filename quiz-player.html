@@ -46,7 +46,7 @@
             background-attachment: fixed;
             color: var(--text-main);
             transition: all 0.5s ease;
-            height: 100vh; /* منع سكرول الصفحة بالكامل */
+            height: 100vh;
             overflow: hidden; 
             display: flex;
             flex-direction: column;
@@ -60,7 +60,6 @@
             justify-content: space-between;
             padding: 20px;
             z-index: 10;
-            flex-shrink: 0;
         }
 
         .icon-btn {
@@ -93,19 +92,64 @@
             border-radius: 20px;
             padding: 30px;
             margin-top: 10px;
-            z-index: 1;
+            position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            /* التعديل السحري: طول متجاوب عشان الكارت ميخرجش برا الشاشة */
             max-height: calc(100vh - 100px); 
             display: flex;
             flex-direction: column;
+        }
+
+        /* Loading Screen */
+        .loader-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            border-radius: 20px;
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: var(--accent-color);
+        }
+
+        .spinner {
+            width: 50px; height: 50px;
+            border: 4px solid rgba(10, 218, 241, 0.1);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Explanation Box */
+        .explanation-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-gradient-2);
+            border: 2px solid var(--accent-color);
+            border-radius: 20px;
+            z-index: 90;
+            padding: 40px 25px;
+            overflow-y: auto;
+        }
+
+        .close-exp {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--wrong-color);
         }
 
         #quiz-screen {
             display: flex;
             flex-direction: column;
             height: 100%;
-            overflow: hidden; /* عشان المحتوى ميهربش برا الشاشة */
+            overflow: hidden;
         }
 
         .quiz-header {
@@ -115,7 +159,6 @@
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid var(--card-border);
-            flex-shrink: 0;
         }
 
         .quiz-title { font-size: 1.1rem; font-weight: 600; color: var(--accent-color); }
@@ -126,23 +169,17 @@
             font-weight: 500;
             margin-bottom: 20px;
             line-height: 1.5;
-            flex-shrink: 0;
         }
 
         .options-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            /* السكرول بيحصل هنا بس لو الاختيارات كتير */
             overflow-y: auto; 
             padding-right: 5px;
             margin-bottom: 15px;
             flex-grow: 1; 
         }
-
-        /* تجميل شريط السكرول الداخلي */
-        .options-list::-webkit-scrollbar { width: 6px; }
-        .options-list::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 10px; }
 
         .option-btn {
             background: rgba(255, 255, 255, 0.03);
@@ -153,11 +190,10 @@
             font-size: 1.05rem;
             text-align: left;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-shrink: 0;
         }
 
         .option-btn:hover:not(:disabled) {
@@ -169,51 +205,40 @@
         .option-btn.correct { background: rgba(16, 185, 129, 0.1); border-color: var(--correct-color); color: var(--correct-color); }
         .option-btn.wrong { background: rgba(239, 68, 68, 0.1); border-color: var(--wrong-color); color: var(--wrong-color); }
 
-        .next-btn {
-            background: var(--accent-color);
-            color: #000;
-            border: none;
-            padding: 15px 30px;
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .next-btn, .explain-trigger-btn {
+            padding: 15px;
             border-radius: 10px;
-            font-size: 1.1rem;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            width: 100%;
-            display: none;
             transition: 0.3s;
-            flex-shrink: 0; /* بيمنع الزرار إنه يصغر */
-            margin-top: auto; /* بيزقه لأسفل الكارت */
+            display: none;
+            border: none;
         }
-        .next-btn:hover { box-shadow: 0 0 15px var(--accent-color); }
+
+        .next-btn { background: var(--accent-color); color: #000; flex: 2; }
+        .explain-trigger-btn { background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); flex: 1; }
 
         .result-screen { text-align: center; display: none; }
         .score-circle {
-            width: 150px;
-            height: 150px;
+            width: 150px; height: 150px;
             border-radius: 50%;
             border: 5px solid var(--accent-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2.5rem;
-            font-weight: 700;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 2.5rem; font-weight: 700;
             margin: 0 auto 30px auto;
             color: var(--accent-color);
-            box-shadow: 0 0 30px var(--hover-shadow);
-            transition: all 0.3s ease; /* تعديل إضافي بسيط لتغيير اللون بنعومة */
         }
 
-        /* تظبيطات الموبايل عشان الشاشة الصغيرة */
         @media (max-width: 600px) {
-            .quiz-container { 
-                padding: 20px 15px; 
-                border-radius: 15px; 
-                width: 95%; 
-                max-height: calc(100vh - 80px); /* مساحة أكبر للموبايل */
-            }
-            .question-text { font-size: 1.1rem; margin-bottom: 15px; }
-            .option-btn { font-size: 1rem; padding: 12px 15px; }
-            .next-btn { padding: 12px 20px; font-size: 1rem; }
+            .quiz-container { width: 95%; padding: 20px; }
+            .btn-group { flex-direction: column; }
         }
     </style>
 </head>
@@ -221,10 +246,22 @@
 
     <nav class="top-nav">
         <a href="javascript:history.back()" class="icon-btn"><i class="fas fa-arrow-left"></i> Back</a>
-        <button id="theme-toggle" class="icon-btn" title="Switch Theme"><i class="fas fa-sun"></i></button>
+        <button id="theme-toggle" class="icon-btn"><i class="fas fa-sun"></i></button>
     </nav>
 
     <div class="quiz-container">
+        <div class="loader-overlay" id="loading-screen">
+            <div class="spinner"></div>
+            <p>Generating Explanation...</p>
+        </div>
+
+        <div class="explanation-overlay" id="explanation-view">
+            <span class="close-exp" onclick="toggleExplanation(false)">&times; </span>
+            <h3 style="color: var(--accent-color); margin-bottom: 15px;"><i class="fas fa-brain"></i> Explanation</h3>
+            <p id="exp-content" style="line-height: 1.6; font-size: 1.1rem;"></p>
+            <p id="exp-source" style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted); font-style: italic;"></p>
+        </div>
+
         <div id="quiz-screen">
             <div class="quiz-header">
                 <span class="quiz-title" id="quiz-title">Loading...</span>
@@ -233,298 +270,242 @@
             
             <h2 class="question-text" id="question-text">Please wait...</h2>
             
-            <div class="options-list" id="options-list">
-                </div>
+            <div class="options-list" id="options-list"></div>
             
-            <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next Question <i class="fas fa-arrow-right"></i></button>
+            <div class="btn-group">
+                <button class="explain-trigger-btn" id="explain-btn" onclick="handleExplain()">Explain <i class="fas fa-magic"></i></button>
+                <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next Question <i class="fas fa-arrow-right"></i></button>
+            </div>
         </div>
 
         <div class="result-screen" id="result-screen">
             <h2>Quiz Completed 🎉</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">Here is your final score</p>
-            
-            <div class="score-circle" id="score-circle">
-                <span id="final-score">0</span>%
-            </div>
-            
-            <div style="display: flex; gap: 15px; justify-content: center;">
-                <button class="icon-btn" onclick="location.reload()" style="background: var(--hover-bg); color: var(--text-main);"><i class="fas fa-redo"></i> Try Again</button>
-                <button class="icon-btn" onclick="location.href='index.html'" style="border-color: var(--accent-color); color: var(--accent-color);"><i class="fas fa-home"></i> Home</button>
-            </div>
+            <div class="score-circle" id="score-circle"><span id="final-score">0</span>%</div>
+            <button class="icon-btn" onclick="location.reload()" style="margin: 0 auto;"><i class="fas fa-redo"></i> Restart</button>
         </div>
     </div>
 
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            const icon = themeToggle.querySelector('i');
-            icon.className = document.body.classList.contains('light-mode') ? 'fas fa-moon' : 'fas fa-sun';
-        });
-
-        // قاعدة بيانات الأسئلة
+        
         const quizDatabase = {
             "org1": {
-                title: "Quiz I",
+                title: "Quiz I | Midterm Content",
                 questions: [
                     { 
-                        q: "Why does benzene prefer Electrophilic Substitution over Addition reactions?", 
-                        options: ["Because it lacks double bonds", "To maintain its aromatic stability", "Because addition reactions are too fast", "Because it is a non-planar molecule"], 
-                        correct: 1 
+                        q: "Why does nitration of Aniline in concentrated H2SO4/HNO3 yield a significant amount of m-nitroaniline despite -NH2 being o,p-directing?", 
+                        options: ["Direct oxidation of the ring", "Formation of the anilinium ion (-NH3+)", "Steric hindrance at ortho positions", "The amino group becomes an electron drawer by resonance"], 
+                        correct: 1,
+                        explanation: "In strongly acidic conditions, the amino group (-NH2) gets protonated to form the anilinium ion (-NH3+). This group is a powerful electron-withdrawing group via induction (-I), which deactivates the ring and directs the next substituent to the meta position.",
+                        source: "Lecture 4: Aromatic Amines - Reactions"
                     },
                     { 
-                        q: "What are the four requirements for a compound to be classified as aromatic?", 
-                        options: ["Cyclic, Planar, sp3 hybridized, obeys Huckel's rule", "Open chain, Planar, Fully conjugated, 4n electrons", "Cyclic, Planar, Fully conjugated (all sp2), obeys Huckel's rule (4n+2)", "Cyclic, Non-planar, conjugated, 6 electrons"], 
-                        correct: 2 
+                        q: "In the Aldol condensation between Benzaldehyde and Acetone, Benzaldehyde cannot act as the nucleophile. Why?", 
+                        options: ["It is too stable due to aromaticity", "It lacks alpha-hydrogens to form an enolate", "The carbonyl carbon is too shielded", "It reacts faster with itself (Cannizzaro)"], 
+                        correct: 1,
+                        explanation: "Aldol condensation requires the formation of an enolate ion via the removal of an alpha-hydrogen. Benzaldehyde has no hydrogen atoms on the carbon adjacent to the carbonyl group, so it can only serve as the electrophile for another enolate to attack.",
+                        source: "Lecture 6: Aldehydes & Ketones - Condensations"
                     },
                     { 
-                        q: "Based on Huckel's rule, if a cyclic planar system has 6 π electrons, what is the value of 'n'?", 
-                        options: ["n = 0", "n = 1", "n = 2", "n = 1.5"], 
-                        correct: 1 
+                        q: "Which of these molecules will have the HIGHEST resonance energy (greatest stability)?", 
+                        options: ["1,3,5-Cyclohexatriene (Kekule structure)", "Benzene", "Cyclooctatetraene", "Cyclobutadiene"], 
+                        correct: 1,
+                        explanation: "Benzene is a perfectly delocalized 6-pi electron system that meets Hückel's 4n+2 rule. Its resonance energy (approx 36 kcal/mol) makes it significantly more stable than non-aromatic or anti-aromatic cyclic polyenes.",
+                        source: "Lecture 1: Aromaticity & Stability"
                     },
                     { 
-                        q: "Which of the following describes the 'Anti-aromatic' compounds?", 
-                        options: ["They fulfill the first 3 requirements but fail Huckel's rule (have 4n electrons)", "They fail to be cyclic", "They are more stable than aromatic compounds", "They contain sp3 hybridized carbons"], 
-                        correct: 0 
+                        q: "During the synthesis of Phenol from Chlorobenzene using NaOH at 350°C, which intermediate is formed?", 
+                        options: ["Carbocation", "Meisenheimer Complex", "Benzyne (dehydrobenzene)", "Free Radical"], 
+                        correct: 2,
+                        explanation: "The high temperature/pressure reaction of aryl halides with strong bases (Elimination-Addition) proceeds through a 'Benzyne' intermediate where a triple bond is momentarily formed in the ring.",
+                        source: "Lecture 3: Synthesis of Phenols"
                     },
-                    { 
-                        q: "Why is Cyclopentadiene considered to have acidic protons?", 
-                        options: ["Because it is a strong mineral acid", "Because losing a proton forms a stable aromatic anion", "Because it is a non-cyclic compound", "Because it contains a nitrogen atom"], 
-                        correct: 1 
-                    },
-                    { 
-                        q: "The actual bond length of C-C in the benzene ring (⬢) is:", 
-                        options: ["Equal to a single bond (1.54 Å)", "Equal to a double bond (1.33 Å)", "Intermediate between single and double bonds (1.40 Å)", "Longer than a single bond"], 
-                        correct: 2 
-                    },
-                    { 
-                        q: "Which molecule exists in a 'non-planar tub-shape' and is therefore non-aromatic?", 
-                        options: ["Benzene", "Cyclobutadiene", "Cyclooctatetraene", "Pyrrole"], 
-                        correct: 2 
-                    },
-                    { 
-                        q: "What is the role of concentrated H2SO4 in the nitration of benzene?", 
-                        options: ["It acts as a solvent only", "It acts as a catalyst to generate the nitronium ion (NO2+)", "It prevents the reaction from occurring", "It acts as a reducing agent"], 
-                        correct: 1 
-                    },
-                    { 
-                        q: "In the Electrophilic Substitution mechanism, the rate-determining step is:", 
-                        options: ["Formation of the electrophile", "The loss of a proton to regenerate aromaticity", "The addition of the electrophile to form the sigma complex (carbocation)", "The reaction of benzene with a nucleophile"], 
-                        correct: 2 
-                    },
-                    { 
-                        q: "Which of the following groups is considered a 'Meta director' in benzene substitution?", 
-                        options: ["-OH", "-CH3", "-NO2", "-NH2"], 
-                        correct: 2 
-                    },
-                    { 
-                        q: "Why does Toluene react 25 times faster than Benzene (⬢) in nitration?", 
-                        options: ["The methyl group is an electron-withdrawing group", "The methyl group activates the ring by donating electron density", "Toluene is less stable than benzene", "Because Toluene is non-planar"], 
-                        correct: 1 
-                    },
-                    { 
-                        q: "The Tropylium cation (Cycloheptatrienyl cation) is highly stable because it is:", 
-                        options: ["Anti-aromatic", "Aromatic with 6 π electrons", "Non-cyclic", "Saturated"], 
-                        correct: 1 
-                    },
-                    { 
-                        q: "Friedel-Crafts Alkylation cannot occur on a benzene ring that contains:", 
-                        options: ["A methyl group", "A strong electron-withdrawing group like -NO2", "A halogen atom", "An ethyl group"], 
-                        correct: 1 
-                    },
-                    { 
-                        q: "Which of these is a disadvantage of Friedel-Crafts Alkylation?", 
-                        options: ["It is too slow", "It only produces monoalkylated products", "Polyalkylation and carbocation rearrangement", "It requires no catalyst"], 
-                        correct: 2 
-                    },
-                    { 
-                        q: "Aryl halides are relatively unreactive toward SN2 reactions due to:", 
-                        options: ["The presence of many protons", "Steric hindrance by the ring and the strength of the C-X bond", "The ring being too electron-rich", "The halogen being a good leaving group"], 
-                        correct: 1 
-                    }
-                ]
+                
+                            
+                { 
+                    q: "Why is Cyclooctatetraene (COT) non-aromatic despite being a cyclic, conjugated system with 8 π electrons?", 
+                    options: ["It follows Hückel's 4n+2 rule where n=1.5", "It adopts a non-planar 'tub' shape to avoid anti-aromatic destabilization", "The π electrons are too far apart to overlap", "It is actually aromatic but very reactive"], 
+                    correct: 1,
+                    explanation: "According to Hückel's rule, a planar 8 π electron system would be anti-aromatic (4n). To avoid this high-energy state, COT distorts into a non-planar tub shape, making it non-aromatic rather than anti-aromatic.",
+                    source: "Lecture 1: Aromaticity - Hückel's Rule Limitations"
+                },
+                { 
+                    q: "In the Nucleophilic Aromatic Substitution (SnAr) of 2,4-dinitrochlorobenzene with NaOCH3, what is the rate-determining step?", 
+                    options: ["Loss of the Chloride leaving group", "Formation of the anionic Meisenheimer complex", "Protonation of the ring", "Rearrangement of the nitro groups"], 
+                    correct: 1,
+                    explanation: "Unlike Sn1/Sn2, SnAr proceeds via an addition-elimination mechanism. The first step, where the nucleophile attacks to form the resonance-stabilized Meisenheimer complex, breaks the aromaticity and is the slowest (rate-determining) step.",
+                    source: "Lecture 2: Nucleophilic Aromatic Substitution (SnAr)"
+                },
+                { 
+                    q: "Why does o-Nitrophenol have a lower boiling point and lower water solubility than p-Nitrophenol?", 
+                    options: ["o-Nitrophenol has a higher molecular weight", "Intramolecular hydrogen bonding in the ortho isomer", "Intermolecular hydrogen bonding in the ortho isomer", "The para isomer is more volatile due to symmetry"], 
+                    correct: 1,
+                    explanation: "In o-nitrophenol, the hydroxyl group forms an 'intramolecular' hydrogen bond with the adjacent nitro group. This reduces its ability to form 'intermolecular' bonds with water or other molecules, leading to lower solubility and higher volatility (steam-distillable).",
+                    source: "Lecture 3: Phenols - Physical Properties"
+                },
+                { 
+                    q: "What is the product formed when Benzaldehyde is treated with 50% NaOH (Cannizzaro Reaction), and why?", 
+                    options: ["Benzyl alcohol and Sodium benzoate; because it lacks alpha-hydrogens", "Cinnamic acid; via enolate formation", "Aldol adduct; via nucleophilic attack", "Benzene and Formic acid; via decarboxylation"], 
+                    correct: 0,
+                    explanation: "Aldehydes without alpha-hydrogens (like Benzaldehyde) cannot form enolates. Instead, they undergo self oxidation-reduction (disproportionation) where one molecule is reduced to an alcohol and the other is oxidized to a salt of a carboxylic acid.",
+                    source: "Lecture 6: Aldehydes & Ketones - Cannizzaro Reaction"
+                },
+                { 
+                    q: "Which of the following factors makes N,N-Dimethyl-o-toluidine a stronger base than N,N-Dimethylaniline?", 
+                    options: ["The inductive effect (+I) of the methyl group", "Steric Inhibition of Resonance (SIR)", "Hyperconjugation of the ortho-methyl group", "Decreased s-character of the lone pair"], 
+                    correct: 1,
+                    explanation: "The ortho-methyl group creates steric hindrance that forces the dimethylamino group out of the plane of the ring. This prevents the lone pair from delocalizing into the ring via resonance, keeping it localized on Nitrogen and more available for protons.",
+                    source: "Lecture 4: Aromatic Amines - Basicity & SIR Effect"
+                },
+                { 
+                    q: "During the Reimer-Tiemann reaction of Phenol with CHCl3/KOH, what is the reactive electrophile generated in situ?", 
+                    options: ["Carbocation (:CH2+)", "Dichlorocarbene (:CCl2)", "Trichloromethyl anion (CCl3-)", "Chloroform radical"], 
+                    correct: 1,
+                    explanation: "The reaction of Chloroform (CHCl3) with a strong base (KOH) undergoes alpha-elimination to produce Dichlorocarbene (:CCl2). This neutral but highly electron-deficient species acts as the electrophile that attacks the phenoxide ring.",
+                    source: "Lecture 3: Reactions of Phenols"
+                }
+                ]   
             },
-        "ana1": {
-                title: "Quiz I",
+            
+            "ana1": {
+                title: "Quiz I | Midterm Content",
                 questions: [
                     { 
-                        q: "Which of the following is a characteristic requirement for a primary standard? ", 
-                        options: ["Low equivalent weight to minimize weighing errors", "High purity and definite known composition", "It must be standardized against a secondary standard before use", "Highly hygroscopic to absorb moisture"], 
-                        correct: 1 
+                        q: "Which of the following is a characteristic requirement for a primary standard?", 
+                        options: ["Low equivalent weight", "High purity and definite known composition", "Must be standardized before use", "Highly hygroscopic"], 
+                        correct: 1,
+                        explanation: "A primary standard must be extremely pure (99.9%+) and have a stable, known composition so that the number of moles can be calculated accurately by weight.",
+                        source: "Lecture 1: Introduction to Volumetric Analysis"
                     },
                     { 
-                        q: "The titer of a solution in volumetric analysis is defined as: ", 
-                        options: ["The weight of the sample that is chemically equivalent to 1 ml of titrant", "The number of gram Equivalent Weight in one liter", "The volume of titrant required to neutralize 10 ml of sample", "The concentration expressed in parts per million"], 
-                        correct: 0 
+                        q: "The pH of a salt solution formed from a strong acid and a weak base (e.g., NH4Cl) is:", 
+                        options: ["Exactly 7", "Less than 7 (acidic)", "Greater than 7 (alkaline)", "Depends on temperature"], 
+                        correct: 1,
+                        explanation: "NH4Cl dissociates into NH4+ and Cl-. The NH4+ (conjugate acid of a weak base) reacts with water (hydrolysis) to produce H3O+, making the solution acidic.",
+                        source: "Lecture 3: pH of Salt Solutions"
                     },
                     { 
-                        q: "Why is an aqueous solution of ammonium chloride (NH4Cl) acidic? ", 
-                        options: ["Both the acid and base are strong and completely dissociated", "Ammonium combines with hydroxide to form weakly dissociated NH4OH, increasing the [H+] concentration", "It is formed from a weak acid and a weak base", "The chloride ion reacts with water to release protons"], 
-                        correct: 1 
+                        q: "A buffer solution shows its maximum buffering capacity when:", 
+                        options: ["pH = pKw", "pH = pKa ± 1", "pH = pKa", "Salt concentration is zero"], 
+                        correct: 2,
+                        explanation: "According to the Henderson-Hasselbalch equation, when [Salt] = [Acid], the log term becomes zero, and pH = pKa. This is where the buffer is most resistant to change.",
+                        source: "Lecture 3: Buffer Solutions"
                     },
                     { 
-                        q: "In an acidic buffer (Acetic acid & Sodium acetate), what happens upon the addition of a strong acid like HCl? ", 
-                        options: ["The strong acid neutralizes the acetic acid, causing a sharp drop in pH", "The strong acid is converted to a weakly dissociated acid (CH3COOH), keeping the pH almost constant", "The pH increases significantly due to the formation of NaCl", "The buffer capacity is immediately destroyed"], 
-                        correct: 1 
+                        q: "During the titration of boric acid, glycerol is added to:", 
+                        options: ["Act as an indicator", "Prevent precipitation", "Enhance its acidity", "Neutralize the base"], 
+                        correct: 2,
+                        explanation: "Boric acid is too weak to be titrated directly. Glycerol reacts with it to form a complex 'Glyceroboric acid' which is a much stronger acid and can be titrated with NaOH.",
+                        source: "Lecture 4: Titration of Weak Acids"
                     },
                     { 
-                        q: "In the titration of a weak acid against a strong base, the pH at the equivalence point is typically: ", 
-                        options: ["Exactly 7.00", "Less than 7 due to the formation of a strong acid", "Greater than 7 due to the formation of a salt of a weak acid and strong base", "Determined solely by the concentration of the strong base"], 
-                        correct: 2 
+                        q: "In the double indicator titration of Na2CO3, the first end point (pH 8.3) is detected by:", 
+                        options: ["Methyl orange", "Phenolphthalein", "Bromothymol blue", "Litmus"], 
+                        correct: 1,
+                        explanation: "Phenolphthalein has a range of 8.2-10. It changes from pink to colorless exactly when Na2CO3 is converted to NaHCO3 (the first half-neutralization).",
+                        source: "Lecture 4: Mixtures of Carbonates"
                     },
                     { 
-                        q: "When titrating phosphoric acid (H3PO4) with NaOH, why can't the third proton be determined directly? ", 
-                        options: ["Because it forms an insoluble precipitate with NaOH", "Because its dissociation constant (Ka3) is very small and pK3 is very close to pKw", "Because the first two protons completely neutralize the NaOH", "Because H3PO4 acts as a strong acid for all three protons"], 
-                        correct: 1 
+                        q: "Why is ether used in the biphasic titration of sodium salicylate?", 
+                        options: ["As a solvent for salt", "To extract formed salicylic acid", "As a primary standard", "To change pH"], 
+                        correct: 1,
+                        explanation: "Salicylic acid is insoluble in water but highly soluble in ether. Removing it from the water layer prevents a 'false early end point' caused by the acid's own acidity.",
+                        source: "Lecture 5: Biphasic Titrations"
                     },
                     { 
-                        q: "In the double indicator titration of Sodium Carbonate (Na2CO3), the first equivalence point (half neutralization) is detected using: ", 
-                        options: ["Methyl orange at pH 3.8", "Phenolphthalein at pH 8.35", "Bromothymol blue at pH 7.0", "Litmus at pH 4.5"], 
-                        correct: 1 
-                    },
-                    { 
-                        q: "During the biphasic titration of sodium salicylate with standard HCl, why is ether added to the separating funnel? ", 
-                        options: ["To act as a primary standard for HCl", "To dissolve the sodium salicylate salt before titration", "To extract the formed salicylic acid from the aqueous layer to prevent a false and early end point", "To enhance the acidity of the aqueous layer"], 
-                        correct: 2 
-                    },
-                    { 
-                        q: "What is the primary purpose of carrying out a blank determination in residual (back) titrations? ", 
-                        options: ["To determine the exact concentration of the sample without any titrant", "To dissolve insoluble salts like CaCO3 or ZnO", "To determine any 'titration error' and find the exact volume of excess standard under assay conditions", "To standardize the secondary standard against a primary standard"], 
-                        correct: 2 
-                    },
-                    { 
-                        q: "Which of the following types of samples is best determined using a residual (back) titration method? ", 
-                        options: ["Strong acids like HCl and H2SO4", "Volatile substances like ammonia and insoluble substances like Zinc oxide", "Weak bases like aniline in non-aqueous media", "Water-soluble salts of strong bases and strong acids"], 
-                        correct: 1 
+                        q: "A blank determination is mainly carried out in back titrations to:", 
+                        options: ["Speed up reaction", "Minimize titration errors", "Dissolve the sample", "Standardize HCl"], 
+                        correct: 1,
+                        explanation: "A blank titration is done without the sample to account for any impurities in reagents or environmental factors, ensuring the 'excess' titrant calculation is precise.",
+                        source: "Lecture 5: Residual Titrations"
                     }
                 ]
             }
         };
+
         const urlParams = new URLSearchParams(window.location.search);
         const currentQuizId = urlParams.get('quiz');
-        
-        let questions = [];
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let answered = false;
+        let questions = [], currentIdx = 0, score = 0, answered = false;
 
-        // دالة لغبطة (Shuffle) المصفوفة
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-
-        function initQuiz() {
+        function init() {
             if (currentQuizId && quizDatabase[currentQuizId]) {
-                const quizData = quizDatabase[currentQuizId];
-                document.getElementById('quiz-title').textContent = quizData.title;
-                
-                // نسخ الأسئلة ولغبطتها عشان منأثرش على قاعدة البيانات الأصلية
-                questions = [...quizData.questions];
-                shuffleArray(questions);
-                
+                const data = quizDatabase[currentQuizId];
+                document.getElementById('quiz-title').textContent = data.title;
+                questions = [...data.questions];
                 document.getElementById('total-q-num').textContent = questions.length;
-                loadQuestion();
-            } else {
-                document.getElementById('question-text').textContent = "Quiz Not Found | Go Back.";
-                document.getElementById('quiz-title').textContent = "Error";
+                loadQ();
             }
         }
 
-        function loadQuestion() {
+        function loadQ() {
             answered = false;
+            toggleExplanation(false);
             document.getElementById('next-btn').style.display = 'none';
-            document.getElementById('current-q-num').textContent = currentQuestionIndex + 1;
+            document.getElementById('explain-btn').style.display = 'none';
+            document.getElementById('current-q-num').textContent = currentIdx + 1;
             
-            const currentQ = questions[currentQuestionIndex];
-            document.getElementById('question-text').textContent = currentQ.q;
+            const q = questions[currentIdx];
+            document.getElementById('question-text').textContent = q.q;
+            const list = document.getElementById('options-list');
+            list.innerHTML = '';
             
-            const optionsList = document.getElementById('options-list');
-            optionsList.innerHTML = ''; 
-            
-            currentQ.options.forEach((optionText, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerHTML = `${optionText} <i class="fas fa-circle" style="font-size: 0.5rem; opacity: 0;"></i>`;
-                btn.onclick = () => checkAnswer(index, btn);
-                optionsList.appendChild(btn);
+            q.options.forEach((opt, i) => {
+                const b = document.createElement('button');
+                b.className = 'option-btn';
+                b.innerHTML = `${opt} <i class="fas fa-circle" style="opacity:0"></i>`;
+                b.onclick = () => check(i, b);
+                list.appendChild(b);
             });
-            
-            // التأكد إن السكرول يرجع لأول الاختيارات مع كل سؤال جديد
-            optionsList.scrollTop = 0;
         }
 
-        function checkAnswer(selectedIndex, selectedBtn) {
-            if (answered) return; 
+        function check(idx, btn) {
+            if (answered) return;
             answered = true;
-            
-            const currentQ = questions[currentQuestionIndex];
-            const allBtns = document.querySelectorAll('.option-btn');
-            
-            allBtns.forEach(btn => btn.disabled = true);
-            
-            if (selectedIndex === currentQ.correct) {
-                selectedBtn.classList.add('correct');
-                selectedBtn.querySelector('i').className = "fas fa-check-circle";
-                selectedBtn.querySelector('i').style.opacity = "1";
+            const q = questions[currentIdx];
+            const btns = document.querySelectorAll('.option-btn');
+            btns.forEach(b => b.disabled = true);
+
+            if (idx === q.correct) {
+                btn.classList.add('correct');
                 score++;
             } else {
-                selectedBtn.classList.add('wrong');
-                selectedBtn.querySelector('i').className = "fas fa-times-circle";
-                selectedBtn.querySelector('i').style.opacity = "1";
-                
-                const correctBtn = allBtns[currentQ.correct];
-                correctBtn.classList.add('correct');
-                correctBtn.querySelector('i').className = "fas fa-check-circle";
-                correctBtn.querySelector('i').style.opacity = "1";
+                btn.classList.add('wrong');
+                btns[q.correct].classList.add('correct');
             }
+            document.getElementById('next-btn').style.display = 'block';
+            document.getElementById('explain-btn').style.display = 'block';
+        }
+
+        function handleExplain() {
+            const loader = document.getElementById('loading-screen');
+            loader.style.display = 'flex';
             
-            const nextBtn = document.getElementById('next-btn');
-            if (currentQuestionIndex === questions.length - 1) {
-                nextBtn.innerHTML = "Show Results <i class='fas fa-flag-checkered'></i>";
-            }
-            nextBtn.style.display = 'block';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                const q = questions[currentIdx];
+                document.getElementById('exp-content').textContent = q.explanation;
+                document.getElementById('exp-source').textContent = "Reference: " + q.source;
+                toggleExplanation(true);
+            }, 3000);
+        }
+
+        function toggleExplanation(show) {
+            document.getElementById('explanation-view').style.display = show ? 'block' : 'none';
         }
 
         function nextQuestion() {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion();
-            } else {
-                showResults();
-            }
+            currentIdx++;
+            if (currentIdx < questions.length) loadQ();
+            else finish();
         }
 
-        function showResults() {
+        function finish() {
             document.getElementById('quiz-screen').style.display = 'none';
             document.getElementById('result-screen').style.display = 'block';
-            
-            const percentage = Math.round((score / questions.length) * 100);
-            document.getElementById('final-score').textContent = percentage;
-
-            // تحديد اللون بناءً على النتيجة
-            const scoreCircle = document.getElementById('score-circle');
-            let color = "";
-            
-            if (percentage < 50) {
-                color = "#ef4444"; // أحمر
-            } else if (percentage >= 50 && percentage < 75) {
-                color = "#f97316"; // برتقالي
-            } else if (percentage >= 75 && percentage < 90) {
-                color = "#3b82f6"; // أزرق
-            } else {
-                color = "#10b981"; // أخضر
-            }
-
-            // تطبيق اللون
-            scoreCircle.style.borderColor = color;
-            scoreCircle.style.color = color;
-            scoreCircle.style.boxShadow = `0 0 30px ${color}50`;
+            document.getElementById('final-score').textContent = Math.round((score/questions.length)*100);
         }
 
-        window.onload = initQuiz;
+        window.onload = init;
+        document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('light-mode');
     </script>
 </body>
 </html>
