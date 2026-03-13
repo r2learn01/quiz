@@ -236,9 +236,31 @@
             color: var(--accent-color);
         }
 
+        /* تحسينات الموبايل هنا */
         @media (max-width: 600px) {
-            .quiz-container { width: 95%; padding: 20px; }
-            .btn-group { flex-direction: column; }
+            .quiz-container { 
+                width: 95%; 
+                padding: 15px; 
+                max-height: calc(100vh - 80px); /* مساحة أوسع قليلاً للشاشات الصغيرة */
+            }
+            .question-text { 
+                font-size: 1.1rem; 
+                margin-bottom: 15px; 
+            }
+            .option-btn { 
+                padding: 12px 15px; 
+                font-size: 0.95rem; 
+            }
+            .btn-group { 
+                flex-direction: column; 
+                gap: 8px; 
+            }
+            .explanation-overlay { 
+                padding: 20px 15px; 
+            }
+            .next-btn, .explain-trigger-btn {
+                padding: 12px;
+            }
         }
     </style>
 </head>
@@ -273,8 +295,8 @@
             <div class="options-list" id="options-list"></div>
             
             <div class="btn-group">
-                <button class="explain-trigger-btn" id="explain-btn" onclick="handleExplain()">Explain <i class="fas fa-magic"></i></button>
-                <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next Question <i class="fas fa-arrow-right"></i></button>
+            <button class="explain-trigger-btn" id="explain-btn" onclick="handleExplain()">Explain <i class="fas fa-robot"></i></button>
+            <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next Question <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
 
@@ -287,7 +309,7 @@
 
     <script>
         
-        const quizDatabase = {
+         const quizDatabase = {
             "org1": {
                 title: "Quiz I | Midterm Content",
                 questions: [
@@ -430,7 +452,10 @@
             if (currentQuizId && quizDatabase[currentQuizId]) {
                 const data = quizDatabase[currentQuizId];
                 document.getElementById('quiz-title').textContent = data.title;
-                questions = [...data.questions];
+                
+                // تم إضافة هذا السطر لترتيب الأسئلة عشوائياً في كل مرة
+                questions = [...data.questions].sort(() => Math.random() - 0.5);
+                
                 document.getElementById('total-q-num').textContent = questions.length;
                 loadQ();
             }
