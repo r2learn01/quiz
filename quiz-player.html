@@ -343,14 +343,62 @@
                         correct: 1 
                     }
                 ]
+            },
+        "ana1": {
+                title: "Quiz I",
+                questions: [
+                    { 
+                        q: "Which of the following is a characteristic requirement for a primary standard? ", 
+                        options: ["Low equivalent weight to minimize weighing errors", "High purity and definite known composition", "It must be standardized against a secondary standard before use", "Highly hygroscopic to absorb moisture"], 
+                        correct: 1 
+                    },
+                    { 
+                        q: "The titer of a solution in volumetric analysis is defined as: ", 
+                        options: ["The weight of the sample that is chemically equivalent to 1 ml of titrant", "The number of gram Equivalent Weight in one liter", "The volume of titrant required to neutralize 10 ml of sample", "The concentration expressed in parts per million"], 
+                        correct: 0 
+                    },
+                    { 
+                        q: "Why is an aqueous solution of ammonium chloride (NH4Cl) acidic? ", 
+                        options: ["Both the acid and base are strong and completely dissociated", "Ammonium combines with hydroxide to form weakly dissociated NH4OH, increasing the [H+] concentration", "It is formed from a weak acid and a weak base", "The chloride ion reacts with water to release protons"], 
+                        correct: 1 
+                    },
+                    { 
+                        q: "In an acidic buffer (Acetic acid & Sodium acetate), what happens upon the addition of a strong acid like HCl? ", 
+                        options: ["The strong acid neutralizes the acetic acid, causing a sharp drop in pH", "The strong acid is converted to a weakly dissociated acid (CH3COOH), keeping the pH almost constant", "The pH increases significantly due to the formation of NaCl", "The buffer capacity is immediately destroyed"], 
+                        correct: 1 
+                    },
+                    { 
+                        q: "In the titration of a weak acid against a strong base, the pH at the equivalence point is typically: ", 
+                        options: ["Exactly 7.00", "Less than 7 due to the formation of a strong acid", "Greater than 7 due to the formation of a salt of a weak acid and strong base", "Determined solely by the concentration of the strong base"], 
+                        correct: 2 
+                    },
+                    { 
+                        q: "When titrating phosphoric acid (H3PO4) with NaOH, why can't the third proton be determined directly? ", 
+                        options: ["Because it forms an insoluble precipitate with NaOH", "Because its dissociation constant (Ka3) is very small and pK3 is very close to pKw", "Because the first two protons completely neutralize the NaOH", "Because H3PO4 acts as a strong acid for all three protons"], 
+                        correct: 1 
+                    },
+                    { 
+                        q: "In the double indicator titration of Sodium Carbonate (Na2CO3), the first equivalence point (half neutralization) is detected using: ", 
+                        options: ["Methyl orange at pH 3.8", "Phenolphthalein at pH 8.35", "Bromothymol blue at pH 7.0", "Litmus at pH 4.5"], 
+                        correct: 1 
+                    },
+                    { 
+                        q: "During the biphasic titration of sodium salicylate with standard HCl, why is ether added to the separating funnel? ", 
+                        options: ["To act as a primary standard for HCl", "To dissolve the sodium salicylate salt before titration", "To extract the formed salicylic acid from the aqueous layer to prevent a false and early end point", "To enhance the acidity of the aqueous layer"], 
+                        correct: 2 
+                    },
+                    { 
+                        q: "What is the primary purpose of carrying out a blank determination in residual (back) titrations? ", 
+                        options: ["To determine the exact concentration of the sample without any titrant", "To dissolve insoluble salts like CaCO3 or ZnO", "To determine any 'titration error' and find the exact volume of excess standard under assay conditions", "To standardize the secondary standard against a primary standard"], 
+                        correct: 2 
+                    },
+                    { 
+                        q: "Which of the following types of samples is best determined using a residual (back) titration method? ", 
+                        options: ["Strong acids like HCl and H2SO4", "Volatile substances like ammonia and insoluble substances like Zinc oxide", "Weak bases like aniline in non-aqueous media", "Water-soluble salts of strong bases and strong acids"], 
+                        correct: 1 
+                    }
+                ]
             }
-
-            // "ana1": {
-            //     title: "Precipitation Titrations",
-            //     q: [
-            //         { q: "Which indicator is used in Mohr's method?", options: ["Fluorescein", "Ferric alum", "Potassium chromate", "Eriochrome Black T"], correct: 2 }
-            //     ]
-            // }
         };
         const urlParams = new URLSearchParams(window.location.search);
         const currentQuizId = urlParams.get('quiz');
