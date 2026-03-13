@@ -26,7 +26,7 @@
             --hover-bg: rgba(255, 255, 255, 0.04); /* لون الهوفر الهادي */
             --hover-border: rgba(0, 229, 255, 0.4); /* حدود بلون الأكسنت عند الهوفر */
             --hover-shadow: rgba(0, 229, 255, 0.15); /* توهج (Glow) خفيف ومريح */
-            --paper-color: rgba(255, 255, 255, 0.192);
+            --paper-color: #ffffff3f;
         }
 
         /* الوضع الفاتح (زي ما هو) */
@@ -201,7 +201,7 @@
         .card:hover {
             transform: translateY(-1px);
             background: var(--hover-bg);
-            border-color: var(--hover-border);
+            /* border-color: var(--hover-border); */
             box-shadow: 0 12px 25px var(--hover-shadow);
         }
 
@@ -366,7 +366,7 @@
             "Interactive, Never Boring 🚀",
             "Expected For Exams 🎯",
             "From Recordings & PDFs 📖",
-            "Save Time 👉 Study Smart 💡"
+            "Save Time | Study Smart 💡"
         ];
         
         let currentPhraseIndex = 0;
@@ -401,7 +401,7 @@
 
         // تشغيل تأثير الآلة الكاتبة بعد تحميل الصفحة
         window.onload = () => {
-            setTimeout(typeEffect, 500);
+            setTimeout(typeEffect, 200);
         };
     </script>
 </body>
