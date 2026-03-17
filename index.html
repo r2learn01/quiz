@@ -277,6 +277,64 @@
             .card h3 { font-size: 0.95rem; }
             header { margin: 20px 0 30px 0; }
         }
+
+
+
+        /* Notification Styles */
+
+        #toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast-message {
+    background-color: #1e293b; /* لون خلفية داكن ومريح */
+    color: #ffffff;
+    font-family: 'Cairo', 'Poppins', sans-serif;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    min-width: 300px;
+    text-align: center;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* شريط التقدم */
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(45deg, #00d2ff, #3a7bd5); /* تدرج لوني عصري وجذاب */
+    width: 100%;
+}
+
+@keyframes progress-shrink {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -331,6 +389,17 @@
             </div>
         </footer>
     </div>
+
+
+
+
+<!--  Notification  -->
+
+    <div id="toast-container"></div>
+
+
+
+
 
     <script>
         // نظام تبديل الوضع (ليلي / فاتح)
@@ -404,6 +473,64 @@
         window.onload = () => {
             setTimeout(typeEffect, 200);
         };
+
+
+
+
+
+
+//  Notification System
+
+
+    function showNotification(message, durationInSeconds = 5) {
+    const container = document.getElementById('toast-container');
+    
+    // إنشاء عنصر الإشعار
+    const toast = document.createElement('div');
+    toast.className = 'toast-message';
+    toast.innerText = message;
+
+    // إنشاء شريط التقدم
+    const progressBar = document.createElement('div');
+    progressBar.className = 'toast-progress';
+    // ربط وقت الانيميشن بالوقت المبعوث للدالة
+    progressBar.style.animation = `progress-shrink ${durationInSeconds}s linear forwards`;
+
+    // تجميع العناصر
+    toast.appendChild(progressBar);
+    container.appendChild(toast);
+
+    // إظهار الإشعار بأنيميشن
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10); // تأخير بسيط جداً للسماح للـ CSS بتطبيق الانتقال
+
+    // إخفاء وحذف الإشعار بعد انتهاء الوقت
+    setTimeout(() => {
+        toast.classList.remove('show');
+        // الانتظار حتى ينتهي أنيميشن الاختفاء ثم حذف العنصر من الـ DOM
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, durationInSeconds * 1000);
+}
+
+// مثال للتجربة: سيظهر هذا الإشعار بمجرد تحميل الكود
+
+
+showNotification("IT Assignment Was Added To IT Section ✅", 6);
+
+
+
+
+
     </script>
+
+
+
+
+
+
+
 </body>
 </html>
