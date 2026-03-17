@@ -1,0 +1,323 @@
+
+        /* تعريف الألوان الأساسية للوضع الداكن المريح للعين (أسود عميق مع سيان متوهج) */
+        :root {
+            --bg-gradient-1: #050505; /* أسود عميق جداً */
+            --bg-gradient-2: #17181a; /* رمادي داكن هادي */
+            --bg-gradient-3: #070818; /* أسود ليلي */
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --text-main: #f8fafc; /* أبيض ناصع وناعم لراحة العين */
+            --text-muted: #94a3b8; /* رمادي فاتح للنصوص الفرعية */
+            --accent-color: #0adaf1c7; /* أزرق سيان ناعم وجذاب جداً */
+            --hover-bg: rgba(255, 255, 255, 0.04); /* لون الهوفر الهادي */
+            --hover-border: rgba(0, 229, 255, 0.4); /* حدود بلون الأكسنت عند الهوفر */
+            --hover-shadow: rgba(0, 229, 255, 0.15); /* توهج (Glow) خفيف ومريح */
+            --paper-color: #ffffff3f;
+        }
+
+        /* الوضع الفاتح (زي ما هو) */
+        .light-mode {
+            --bg-gradient-1: #f4f6f9;
+            --bg-gradient-2: #e9ecef;
+            --bg-gradient-3: #f1f3f5;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(0, 0, 0, 0.05);
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --accent-color: #4299e1;
+            --hover-bg: rgba(255, 255, 255, 1);
+            --hover-border: rgba(66, 153, 225, 0.4);
+            --hover-shadow: rgba(66, 153, 225, 0.1);
+            --paper-color: rgba(54, 52, 52, 0.452);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* تطبيق الخط الجديد هنا */
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
+            background-size: 200% 200%;
+            /* الحل هنا: تثبيت الخلفية لمنع ظهور التقطيع الأبيض أثناء السكرول */
+            background-attachment: fixed;
+            animation: gradientMove 20s ease infinite;
+            color: var(--text-main);
+            transition: background 0.5s ease, color 0.5s ease;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* أنميشن الأوراق بشكل أهدى وأخف */
+        .falling-paper {
+            position: fixed;
+            width: 10px;
+            height: 14px;
+            background: var(--paper-color);
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 2px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg) translateX(50px); opacity: 0; }
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1250px;
+            padding: 20px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px 0;
+        }
+
+        #theme-toggle {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--card-border);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        #theme-toggle:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            background: var(--card-bg);
+            /* تأثير إضاءة خفيف للزر */
+            box-shadow: 0 0 10px var(--hover-shadow);
+        }
+
+        header {
+            text-align: center;
+            margin: 30px 0 50px 0;
+            min-height: 130px; /* تم إضافته عشان الصفحة متهتزش وقت الكتابة */
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        h1 span {
+            color: var(--accent-color);
+        }
+
+        /* تنسيقات الـ Typewriter */
+        .description {
+            font-family:"consolas", "monospace";
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* مؤشر الكتابة للآلة الكاتبة */
+        .description::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+            color: var(--accent-color);
+            margin-left: 3px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* توزيع الكروت المرن والمريح */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            width: 280px; /* عرض ثابت للكارت عشان التوزيع يبقى متناسق */
+            padding: 35px 20px;
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* أنميشن أنعم للكارت */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* الهوفر الهادي والمريح للعين مع تأثير الـ Glow */
+        .card:hover {
+            transform: translateY(-1px);
+            background: var(--hover-bg);
+            /* border-color: var(--hover-border); */
+            box-shadow: 0 12px 25px var(--hover-shadow);
+        }
+
+        .card i {
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover i {
+            color: var(--accent-color);
+            transform: scale(1.1); /* تكبير الأيقونة سيكا مع الهوفر */
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500; /* وزن خط مريح */
+            color: var(--text-main);
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 30px 20px;
+            width: 100%;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .footer-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-color);
+            transform: scale(1.15);
+            /* توهج خفيف لأيقونة التليجرام */
+            text-shadow: 0 0 10px var(--hover-shadow);
+        }
+
+        @media (max-width: 650px) {
+            .card-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* عمودين متساويين */
+                gap: 15px; /* مسافة أصغر لتناسب الشاشة */
+                padding: 10px;
+            }
+            .card {
+                width: 100%; /* تأخذ عرض العمود بالكامل */
+                padding: 25px 10px;
+                border-radius: 15px;
+            }
+            .card i { font-size: 2.2rem; margin-bottom: 12px; }
+            .card h3 { font-size: 0.95rem; }
+            header { margin: 20px 0 30px 0; }
+        }
+
+
+
+        /* Notification Styles */
+
+        #toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast-message {
+    background-color: #1e293b; /* لون خلفية داكن ومريح */
+    color: #ffffff;
+    font-family: 'Cairo', 'Poppins', sans-serif;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    min-width: 300px;
+    text-align: center;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* شريط التقدم */
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(45deg, #00d2ff, #3a7bd5); /* تدرج لوني عصري وجذاب */
+    width: 100%;
+}
+
+@keyframes progress-shrink {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+
+
+
+
+
