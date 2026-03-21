@@ -318,8 +318,8 @@
                 title: "Organic II",
                 icon: "fas fa-flask",
                 quizzes: [
-                    { id: "org1", title: "Quiz I", desc: "Level: ٍSlightly Hard", q: 15 },
-                    // { id: "org2", title: "Quiz II", desc: "Level: Normal", q: 15 },
+                    { id: "org1", title: "Quiz I", desc: "Level: Slightly Hard", q: 15 },
+                    { id: "org2", title: "Quiz II", desc: "Level: Hard", q: 10 },
                     // { id: "org3", title: "Quiz III", desc: "Level: Hard", q: 40 }
                 ]
             },
@@ -335,33 +335,49 @@
             },
 
 
-            // pharmacognosy: {
-            //     title: "Pharmacognosy",
-            //     icon: "fas fa-leaf",
-            //     quizzes: [
-            //         { id: "pha", title: "Medicinal Leaves", desc: "Senna, Belladonna, and Digitalis.", q: 30 }
-            //     ]
-            // },
+            pharmacognosy: {
+                title: "Pharmacognosy",
+                icon: "fas fa-leaf",
+                quizzes: [
+                    { id: "pha1", title: "Quiz I", desc: "Active Constituents", q: 10 },
+                    { id: "pha2", title: "Quiz I", desc: "Action & Uses", q: 10 },
+                ]
+            },
         
             it:{
                 title:"IT",
                 icon:"fas fa-desktop",
                 quizzes: [
-                    { id: "it1", title: "IT Assignment", desc: "Level: Easy", q: 30 }
-                    
+                    { id: "it1", title: "IT Assignment", desc: "Level: Easy", q: 30 },
+                    { id: "it2", title: "IT Question Bank 1", desc: "Level: Easy", q: 31 }
                 ]
-            }
+            },
 
-            };
-
-
+            
 
 
+            physical: {
+                title:"Physical Pharmacy",
+                icon:"fas fa-atom",
+                quizzes:[
+                    {id: "phy1", title:"Quiz I", desc:"Level: Medium To Hard", q:15},
+                    {id: "phy2", title:"Quiz II", desc:" Hard", q:10}
+                ]
+            },
+
+            anatomy:{
+                title:"Anatomy & Histology",
+                icon:"fas fa-dna",
+                quizzes:[
+                    {id:"his1", titlee:"Quiz I", desc:"Level: Easy", q:10},
+                    {id:"his2", titlee:"Quiz I", desc:"Level: Normal", q:10},
+                    {id:"his3", titlee:"Quiz III", desc:"Level: Hard", q:10},
+                ]
+            },
 
 
 
-
-
+};
 
 
 
@@ -407,9 +423,9 @@
 
         } else {
             // لو الرابط غلط أو المادة مش موجودة
-            titleElement.textContent = "Coming Soon";
+            titleElement.textContent = "Not In Midterm";
             iconElement.className = "subject-icon fas fa-exclamation-triangle";
-            containerElement.innerHTML = `<div class="empty-state"><p>This Page Is Currently Under Development</p></div>`;
+            containerElement.innerHTML = `<div class="empty-state"><p>==========</p></div>`;
         }
     </script>
 </body>
