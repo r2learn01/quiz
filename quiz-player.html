@@ -198,8 +198,8 @@
 
         .option-btn:hover:not(:disabled) {
             background: var(--hover-bg);
-            border-color: var(--accent-color);
-            transform: translateX(5px);
+            border-color: #4e64a3;
+            /* transform: translateX(1px); */
         }
 
         .option-btn.correct { background: rgba(16, 185, 129, 0.1); border-color: var(--correct-color); color: var(--correct-color); }
@@ -387,6 +387,84 @@
                 }
                 ]   
             },
+
+
+
+       "org2": {
+           title: "Quiz II",
+           questions: [
+       { 
+            q: "Why is Friedel-Crafts Alkylation unsuccessful when attempted on a Nitrobenzene ring?", 
+            options: ["The nitro group reacts with the Lewis acid catalyst", "The nitro group is a powerful electron-withdrawing group that deactivates the ring", "The carbocation electrophile is too strong for the ring", "Nitrobenzene exists in a non-planar tub shape"], 
+            correct: 1,
+            explanation: "Friedel-Crafts reactions (both alkylation and acylation) do not occur on benzene rings containing powerful electron-withdrawing groups like -NO2, -SO3H, or -COOH. These groups decrease the electron density so much that the ring becomes unreactive toward the relatively weak carbocation electrophiles generated in this reaction.",
+            source: "Lecture 2: Audio [1-3]"
+        },
+        { 
+            q: "When treating Aniline with CH3Cl in the presence of AlCl3, why is 'No Reaction' the observed result despite -NH2 being a strong activator?", 
+            options: ["Aniline undergoes polyalkylation immediately", "The lone pair on Nitrogen forms a complex with the Lewis acid, turning it into a deactivating group", "The amino group is too bulky for the AlCl3 catalyst", "Aniline is only reactive toward nucleophilic substitution"], 
+            correct: 1,
+            explanation: "In Friedel-Crafts reactions, the lone pair on the Nitrogen of the amino group (-NH2) acts as a Lewis base and reacts with the Lewis acid catalyst (AlCl3). This forms a complex where the Nitrogen becomes positively charged (-NH2+-AlCl3-). This transformed group is now a powerful electron-withdrawer that deactivates the ring, preventing the reaction.",
+            source: "Lecture 2: Audio [4-6]"
+        },
+        { 
+            q: "In the synthesis of alkylbenzenes, why is Friedel-Crafts Acylation followed by Clemmensen Reduction preferred over direct Alkylation for obtaining n-propylbenzene?", 
+            options: ["Direct alkylation leads to explosive products", "Acylation is faster than alkylation", "Direct alkylation results in carbocation rearrangement to form isopropylbenzene as the major product", "Acylation prevents the formation of ortho-isomers"], 
+            correct: 2,
+            explanation: "Direct alkylation with n-propyl chloride forms a primary carbocation which undergoes a 1,2-hydride shift to form a more stable secondary carbocation (isopropyl). This leads to isopropylbenzene as the major product. Acylation avoids this rearrangement because the acylium ion is resonance-stabilized and does not rearrange.",
+            source: "Lecture 2: Audio [7-12]"
+        },
+        { 
+            q: "A reaction of 1-chloro-3-nitrobenzene with NaOH at 80°C results in 'No Reaction'. What is the most accurate chemical justification?", 
+            options: ["The temperature is too high for the nitro group", "The meta-nitro group cannot stabilize the Meisenheimer complex via resonance", "Chlorine is a better activator than the nitro group", "The ring is too electron-rich for nucleophilic attack"], 
+            correct: 1,
+            explanation: "Nucleophilic Aromatic Substitution (SNAr) requires electron-withdrawing groups (like -NO2) to be in the ortho or para positions to stabilize the Meisenheimer (sigma) complex intermediate through resonance. A meta-nitro group only exerts an inductive effect and cannot place the negative charge on the oxygen atoms of the nitro group, making the intermediate less stable.",
+            source: "Lecture 5: Audio [13-15]"
+        },
+        { 
+            q: "In the Elimination-Addition (Benzyne) mechanism, why does 2-chloro-1,3-dimethylbenzene fail to react with NaNH2 in liquid ammonia?", 
+            options: ["The methyl groups are too small to activate the ring", "There are no ortho-hydrogens available to be abstracted by the base to form the benzyne intermediate", "The chlorine atom is blocked by the methyl groups", "Sodium amide is too weak for this specific substituted ring"], 
+            correct: 1,
+            explanation: "The first step of the Benzyne mechanism is the abstraction of an ortho-proton by a strong base to eliminate HCl and form the triple bond (benzyne). In 2-chloro-1,3-dimethylbenzene, both ortho positions to the chlorine are occupied by methyl groups, leaving no hydrogens available for elimination.",
+            source: "Lecture 5: Audio [16, 17]"
+        },
+        { 
+            q: "Based on the order of activating strength, which of the following compounds will react the fastest in an Electrophilic Aromatic Substitution (SEAr) reaction?", 
+            options: ["Phenol (-OH)", "Aniline (-NH2)", "Acetanilide (-NHCOCH3)", "Toluene (-CH3)"], 
+            correct: 1,
+            explanation: "Nitrogen is less electronegative than Oxygen, making the lone pair on the amino group (-NH2) more available for donation into the benzene ring (+M effect) compared to the hydroxyl group (-OH). Acetanilide is less reactive than Aniline because its lone pair is delocalized into the carbonyl group (cross-conjugation).",
+            source: "Lecture 2: Audio [18, 19] & PDF [20]"
+        },
+        { 
+            q: "Why is 2,6-dimethylbenzoic acid significantly more acidic (pKa 3.21) than benzoic acid (pKa 4.17)?", 
+            options: ["The methyl groups donate electrons to the carboxylate anion", "Steric inhibition of resonance forces the -COOH out of the ring plane, preventing the destabilizing +R effect", "The methyl groups exert a powerful -I effect", "The ring becomes more planar, increasing stabilization"], 
+            correct: 1,
+            explanation: "Ortho-substituents cause steric hindrance that forces the carboxyl group (-COOH) to rotate out of the plane of the benzene ring. This rotation breaks the resonance between the ring and the carbonyl group. Since resonance (+R) normally inhibits the release of the proton, preventing it makes the acid stronger.",
+            source: "Lecture 4: PDF [21, 22]"
+        },
+        { 
+            q: "Why is Cyclopentadiene considered uniquely acidic for a hydrocarbon?", 
+            options: ["It contains a very electronegative carbon atom", "Loss of a proton results in an aromatic anion with 6 pi electrons", "It is a highly strained non-planar molecule", "It reacts spontaneously with water to form an alcohol"], 
+            correct: 1,
+            explanation: "Cyclopentadiene has a pKa around 16 because losing a proton from its sp3 carbon results in the cyclopentadienyl anion. This anion is cyclic, planar, fully conjugated, and has 6 pi electrons (4n+2 where n=1), making it aromatic and exceptionally stable.",
+            source: "Lecture 1: Audio [23-25] & PDF [26]"
+        },
+        { 
+            q: "Which specific nitrating agent is preferred to obtain a higher yield of ortho-nitrophenol while avoiding ring oxidation?", 
+            options: ["Concentrated HNO3/H2SO4", "Fuming Nitric Acid", "Acetyl Nitrate [HNO3/(CH3CO)2O]", "Dilute HNO3 at 100°C"], 
+            correct: 2,
+            explanation: "Acetyl nitrate is a milder nitrating agent compared to the mixed acid (HNO3/H2SO4). It is particularly useful for sensitive rings like phenols or amines to avoid oxidation. It specifically yields a higher proportion of the ortho-isomer through a unique six-center rearrangement mechanism.",
+            source: "Lecture 4: PDF [27, 28]"
+        },
+        { 
+            q: "Why are aldehydes generally more reactive than ketones toward nucleophilic addition reactions?", 
+            options: ["Aldehydes have more resonance structures", "Ketones have two electron-donating alkyl groups that reduce the partial positive charge on the carbonyl carbon", "Aldehydes are always non-polar", "The carbonyl group in aldehydes is sp3 hybridized"], 
+            correct: 1,
+            explanation: "Aldehydes are more reactive due to both electronic and steric factors. Electronically, ketones have two alkyl groups (+I effect) that decrease the electrophilicity of the carbonyl carbon more than the single alkyl group in aldehydes. Sterically, aldehydes have less crowding (only one R group and one H), making it easier for nucleophiles to attack.",
+            source: "Lecture 5: PDF [29-31]"
+        }
+    ]
+},
 
 
             "ana1":{
@@ -619,8 +697,208 @@
         ]
             },
             
-         
-        
+  "pha1": {
+    title: "Quiz I",
+    questions: [
+        {
+            q: "In 'Ammi visnaga', which group of active constituents is primarily responsible for its spasmolytic effect on the coronary vessels and ureter?",
+            options: ["Pyrano-coumarins (Visnadin)", "Furano-chromones (Khellin and Visnagin)", "Flavonoids (Quercetin)", "Furano-coumarins (Xanthotoxin)"],
+            correct: 1,
+            explanation: "The essential active principles of Ammi visnaga are furano-chromones, specifically Khellin and Visnagin, which act as powerful smooth muscle relaxants used in treating angina pectoris and renal stones.",
+            source: "Lecture_1,2.pdf -> Ammi visnaga (Page 7)"
+        },
+        {
+            q: "The 'Milk Thistle' (Silybum marianum) contains a mixture of isomeric flavolignans collectively known as Silymarin. Identify the specific components of this mixture.",
+            options: ["Limonine and Citral", "Silybin, Silychristin, and Silidianin", "Xanthotoxin and Bergapten", "Ephedrine and Pseudo-ephedrine"],
+            correct: 1,
+            explanation: "Silymarin is a mixture of three isomeric flavolignans: silybin, silychristin, and silidianin. These provide the hepatoprotective effects by stabilizing hepatic cell membranes.",
+            source: "Lecture_2,3,herbs.pdf -> Milk Thistle Active Constituents (Page 11)"
+        },
+        {
+            q: "What is the primary active principle of 'Ammi majus', and what is its specific therapeutic use compared to 'Ammi visnaga'?",
+            options: ["Khellin; used for coronary dilation", "Psoralene; used for vitiligo (leucodermia)", "Capsaicin; used for dyspepsia", "Lobeline; used for asthma"],
+            correct: 1,
+            explanation: "Ammi majus contains Psoralene (a furano-coumarin mixture). Unlike Ammi visnaga which is a spasmolytic, Ammi majus is used to treat leucodermia (vitiligo) because it stimulates pigment production in skin exposed to UV light.",
+            source: "Lecture_2,3,herbs.pdf -> Ammi majus Actions (Page 8)"
+        },
+        {
+            q: "Menthol, the main volatile oil component of Peppermint, facilitates muscle relaxation in the GIT by acting as a:",
+            options: ["Sodium channel activator", "Potassium channel opener", "Calcium channel blocker", "Cholinesterase inhibitor"],
+            correct: 2,
+            explanation: "Menthol's mechanism of action involves blocking calcium channels. This prevents the influx of calcium into smooth muscle cells, leading to relaxation in the GIT, vessels, and heart.",
+            source: "Lecture_2,3,herbs.pdf -> Menthol Mechanism (Page 15)"
+        },
+        {
+            q: "Which active principle derived from 'Halfa Bar' (Cymbopogon proximus) is used for the expulsion of ureteric calculi?",
+            options: ["Khellol", "Ammidin", "Proximadiol (Halphabarol)", "Cineole"],
+            correct: 2,
+            explanation: "Proximadiol is a dicyclic sesquiterpene found in Halfa bar. It is unique because it causes ureteric dilatation while increasing the propulsive movement of the ureter to help expel stones.",
+            source: "Lecture_3.pdf -> Halfa bar Constituents (Page 20)"
+        },
+        {
+            q: "Regarding the 'Catharanthus' (Vinca) alkaloids, which specific constituent is clinically used for treating children with leukemia?",
+            options: ["Vinblastine", "Vincristine", "Vindoline", "Catharanthine"],
+            correct: 1,
+            explanation: "While both are derived from Catharanthus roseus, Vincristine is specifically used for the treatment of leukemia in children, whereas Vinblastine is used for Hodgkin's disease and breast cancer.",
+            source: "Lecture_3.pdf -> Catharanthus Uses (Page 19)"
+        },
+        {
+            q: "The 'Lobelia' herb is used in pharmaceutical preparations to break the smoking habit. This is due to which active alkaloid?",
+            options: ["Lobeline", "Nicotine", "Coniine", "Ergotamine"],
+            correct: 0,
+            explanation: "Lobelia contains the piperidine alkaloid Lobeline. It has a 'nicotine-like action,' which is used therapeutically to satisfy cravings during smoking cessation.",
+            source: "Lecture_3.pdf -> Lobelia Uses (Page 17)"
+        },
+        {
+            q: "Which constituent of 'Cannabis sativa' is identified as the potent anti-emetic component used specifically in cancer patients?",
+            options: ["Cannabidiol (CBD)", "Cannabinol", "Tetrahydrocannabinol (THC)", "Choline"],
+            correct: 2,
+            explanation: "Tetrahydrocannabinol (THC) is the primary resin material in Cannabis and is used clinically as a potent anti-emetic for patients undergoing cancer treatments.",
+            source: "Lecture_3.pdf -> Cannabis Uses (Page 17)"
+        },
+        {
+            q: "In the 'Ergot' group of alkaloids, which constituent is specifically indicated to stimulate the uterus and reduce postpartum hemorrhage?",
+            options: ["Ergotamine", "Ergotoxine", "Ergometrine", "Vincristine"],
+            correct: 2,
+            explanation: "Ergometrine is the specific Ergot alkaloid that stimulates the uterus to initiate labor and is used to reduce postpartum hemorrhage.",
+            source: "Lecture_3.pdf -> Ergot Uses (Page 17)"
+        },
+        {
+            q: "The 'Capsicum' fruit's medicinal value in alleviating functional dyspepsia is directly related to which active chemical?",
+            options: ["Capsanthin", "Capsaicin", "Citrullol", "Aurantiamarin"],
+            correct: 1,
+            explanation: "Capsaicin is the chemical in red pepper that helps reduce pain. In functional dyspepsia, it works by desensitizing gastric nociceptive C-fibres.",
+            source: "Lecture_2,3,herbs.pdf -> Capsicum Clinical Trial (Page 8)"
+        }
+    ]
+},
+
+"pha2": {
+    title: "Quiz II",
+    questions: [
+        {
+            q: "Which specific alkaloid is clinically preferred for treating pediatric leukemia, and what characteristic neurological complication is associated with its repeated administration?",
+            options: [
+                "Vinblastine; severe gastric ulceration",
+                "Vincristine; peripheral neuropathy including numbness in extremities",
+                "Ergotamine; persistent vasospasm and gangrene",
+                "Lobeline; medullary paralysis and collapse"
+            ],
+            correct: 1,
+            explanation: "Vincristine is the alkaloid used for leukemia in children. Its major neurological side effect, especially with repeated doses, is peripheral neuropathy which presents as numbness in fingers and toes.",
+            source: "Lecture_3.pdf -> Catharanthus (Page 19)"
+        },
+        {
+            q: "How does Silymarin provide hepato-cellular protection against toxins like alcohol and carbon tetrachloride?",
+            options: [
+                "By neutralizing gastric acid and aiding in fat emulsification",
+                "By inhibiting the metabolic breakdown of carbohydrates in the liver",
+                "By altering the structure of the outer cell membrane to block toxin entry",
+                "By acting as a direct sedative to reduce hepatic inflammation"
+            ],
+            correct: 2,
+            explanation: "Silymarin protects the liver by stabilizing the outer cell membrane of hepatic cells, which physically inhibits the passage of toxins into the cells.",
+            source: "Lecture_2,3,herbs.pdf -> Silybum marianum (Page 11)"
+        },
+        {
+            q: "In the management of renal colic, what is the specific role of Proximadiol (Halphabarol) in the expulsion of calculi?",
+            options: [
+                "It chemically dissolves the stones into smaller particles",
+                "It acts as a systemic diuretic to increase the force of urine",
+                "It induces ureteric dilatation while maintaining active propulsive movement",
+                "It functions as a local anesthetic to eliminate the sensation of pain"
+            ],
+            correct: 2,
+            explanation: "Proximadiol, the active principle of Halfa bar, produces ureteric dilatation below the stone while increasing the propulsive movement of the smooth muscles to help push the stone out.",
+            source: "Lecture_3.pdf -> Halfa bar (Page 20)"
+        },
+        {
+            q: "Why is the use of Fennel considered clinically risky for patients undergoing treatment with the drug Tamoxifen?",
+            options: [
+                "It accelerates the renal excretion of the medication",
+                "Its estrogen-like activity may interfere with the drug's efficacy",
+                "It causes severe hypersensitivity when combined with antibiotics",
+                "It inhibits the liver's ability to regenerate after chemotherapy"
+            ],
+            correct: 1,
+            explanation: "Fennel has estrogenic activity. Since Tamoxifen is used for estrogen-sensitive cancers, Fennel can interfere with and decrease the effectiveness of the treatment.",
+            source: "Lecture_1,2.pdf -> Fennel (Page 2)"
+        },
+        {
+            q: "What is the primary pharmacological justification for including Ergotamine in pharmaceutical combinations with caffeine for headache relief?",
+            options: [
+                "To stimulate the uterus and reduce bleeding",
+                "To lower blood pressure in hypertensive patients",
+                "To treat migraine through its specific vascular effects",
+                "To act as a mild sedative for elderly patients"
+            ],
+            correct: 2,
+            explanation: "Ergotamine is the specific Ergot alkaloid indicated for migraines. Caffeine is often added to these formulations to improve absorption and effectiveness.",
+            source: "Lecture_3.pdf -> Ergot (Page 17)"
+        },
+        {
+            q: "What mechanism allows Menthol to induce the relaxation of smooth muscles in the gastrointestinal tract and blood vessels?",
+            options: [
+                "It acts as a calcium channel blocker",
+                "It stimulates the release of mucosal prostaglandins",
+                "It functions as a sodium channel activator",
+                "It increases the sensitivity of cholinergic receptors"
+            ],
+            correct: 0,
+            explanation: "Menthol acts as a calcium channel blocker, preventing the influx of calcium into smooth muscle cells, which leads to muscle relaxation.",
+            source: "Lecture_2,3,herbs.pdf -> Mentha (Page 15)"
+        },
+        {
+            q: "Identify the therapeutic application for Ammi majus that distinguishes it from the spasmolytic effects of Ammi visnaga.",
+            options: [
+                "Treatment of bronchial asthma and whooping cough",
+                "Dilation of coronary arteries for angina pectoris relief",
+                "Treatment of leucodermia (vitiligo) by stimulating pigment production",
+                "Expulsion of small bladder and kidney stones"
+            ],
+            correct: 2,
+            explanation: "Ammi majus contains psoralene, which is used topically to treat vitiligo (leucodermia) because it stimulates pigment production when the skin is exposed to UV light.",
+            source: "Lecture_2,3,herbs.pdf -> Ammi majus (Page 8)"
+        },
+        {
+            q: "Why is it strictly contraindicated to apply peppermint oil directly to the facial area of an infant?",
+            options: [
+                "It causes permanent thinning of the dermal layer",
+                "It may trigger a reflex spasm that inhibits breathing",
+                "It neutralizes the effects of topical antibiotic creams",
+                "It leads to a significant increase in intracranial pressure"
+            ],
+            correct: 1,
+            explanation: "The potent vapors of peppermint oil can cause a sudden respiratory spasm in infants, which can lead to the inability to breathe.",
+            source: "Lecture_2,3,herbs.pdf -> Mentha Contraindications (Page 15)"
+        },
+        {
+            q: "How does the alkaloid Lobeline facilitate the process of breaking the smoking habit?",
+            options: [
+                "By inducing severe nausea when tobacco is smelled",
+                "By providing a nicotine-like action that satisfies physiological cravings",
+                "By numbing the taste buds to make smoking unpleasant",
+                "By acting as a strong sedative to manage nicotine withdrawal"
+            ],
+            correct: 1,
+            explanation: "Lobeline (from Lobelia) has a 'nicotine-like action,' allowing it to be used in smoking cessation aids to mimic nicotine's effect without tobacco use.",
+            source: "Lecture_3.pdf -> Lobelia (Page 17)"
+        },
+        {
+            q: "Which specific component of Cannabis is utilized as a medical intervention for nausea and vomiting in cancer patients?",
+            options: [
+                "Cannabidiol (CBD)",
+                "Cannabinol",
+                "Tetrahydrocannabinol (THC)",
+                "Trigonelline"
+            ],
+            correct: 2,
+            explanation: "THC is a potent anti-emetic component found in Cannabis resin and is used clinically to help cancer patients manage chemotherapy-induced vomiting.",
+            source: "Lecture_3.pdf -> Cannabis (Page 17)"
+        }
+    ]
+},
+
 
 
        "it1":{
@@ -837,7 +1115,658 @@
                     source: "Types of Computers → Tablet"
                 }
             ]
+        },
+
+        "it2":{
+            title: "IT Question Bank 1",
+            questions:[
+        { 
+            q: "Computer is an __________ device.", 
+            options: ["Electronic", "Electrical", "Mechanical", "Analog"], 
+            correct: 0,
+            explanation: "A computer is defined as an electronic device that operates under the control of instructions stored in its own memory, which can accept, process, and store data.",
+            source: "IT_merged.pdf -> Introduction to Computer (Page 2)"
+        },
+        { 
+            q: "The word computer has been derived from which of the following language?", 
+            options: ["Greek", "English", "Latin", "Hindi"], 
+            correct: 2,
+            explanation: "The term 'Computer' is derived from the Latin word 'computare', which means to calculate or to count.",
+            source: "IT_merged.pdf -> Introduction to Computer -> Etymology (Page 2)"
+        },
+        { 
+            q: "Who is the father of computer?", 
+            options: ["Alan Turing", "Charles Babbage", "Simur Cray", "Augusta Adaming"], 
+            correct: 1,
+            explanation: "Charles Babbage is known as the 'Father of the Computer' because he designed the first mechanical computer, the Analytical Engine, which laid the framework for modern computer architecture.",
+            source: "IT_merged.pdf -> History of Computers (Page 5)"
+        },
+        { 
+            q: "Who is the father of Computer Science?", 
+            options: ["Alan Turing", "Charles Babbage", "Simur Cray", "Augusta Adaming"], 
+            correct: 0,
+            explanation: "Alan Turing is considered the 'Father of Computer Science' for his significant role in developing the concepts of algorithms and computation with the Turing machine.",
+            source: "IT_merged.pdf -> History of Computers -> Pioneers (Page 5)"
+        },
+        { 
+            q: "Who is the father of personal computer?", 
+            options: ["Edward Robert", "Charles Babbage", "Alan Turing", "None of these"], 
+            correct: 0,
+            explanation: "Edward Robert is often credited as the father of the personal computer for his role in the development of the Altair 8800, the first commercially successful personal computer.",
+            source: "IT_merged.pdf -> History of Computers -> Personal Computing (Page 13)"
+        },
+        { 
+            q: "A CPU contains __________.", 
+            options: ["A card reader and a printing device", "An analytical engine and a control unit", "A control unit and an arithmetic logic unit", "An arithmetic logic unit and a card reader"], 
+            correct: 2,
+            explanation: "The Central Processing Unit (CPU) consists of two main functional parts: the Control Unit (CU) and the Arithmetic Logic Unit (ALU).",
+            source: "IT_merged.pdf -> Components of Computer System -> CPU (Page 22-23)"
+        },
+        { 
+            q: "Which of the following controls the process of interaction between the user and the operating system?", 
+            options: ["User Interface", "Language Translator", "Platform", "Screen Saver"], 
+            correct: 0,
+            explanation: "The User Interface (UI) is the bridge that allows a user to interact with the software and hardware of the computer, translating user commands into actions for the operating system.",
+            source: "IT_merged.pdf -> Software -> Operating Systems (Page 36)"
+        },
+        { 
+            q: "The first computers were programmed using __________.", 
+            options: ["Assembly language", "Machine language", "Source code", "Object code"], 
+            correct: 1,
+            explanation: "First-generation computers used machine language, which is the lowest-level programming language consisting only of binary digits (0s and 1s).",
+            source: "IT_merged.pdf -> Computer Generations -> First Generation (Page 7)"
+        },
+        { 
+            q: "__________ is a combination of hardware and software that facilitates the sharing of information between computing devices.", 
+            options: ["Peripheral", "Expansion board", "Network", "Digital device"], 
+            correct: 2,
+            explanation: "A network consists of multiple computers and devices connected via communication channels to share resources, data, and information.",
+            source: "IT_merged.pdf -> Computer Networks Introduction (Page 45)"
+        },
+        { 
+            q: "Coded entries which are used to gain access to a computer system are called __________.", 
+            options: ["Entry codes", "Passwords", "Security commands", "Codewords"], 
+            correct: 1,
+            explanation: "Passwords are security measures used to verify the identity of a user seeking access to a system, protecting data from unauthorized access.",
+            source: "IT_merged.pdf -> Data Security (Page 50)"
+        },
+        { 
+            q: "Which of the following statements is true about ASCII?", 
+            options: ["It stands for American Standard Code for Information Interchange", "It is an 8-bit code", "It was developed by IBM", "Both A and B"], 
+            correct: 0,
+            explanation: "ASCII (American Standard Code for Information Interchange) is a character encoding standard for electronic communication. Standard ASCII is actually a 7-bit code (though often used in 8-bit systems).",
+            source: "IT_merged.pdf -> Data Representation -> ASCII (Page 32)"
+        },
+        { 
+            q: "What is the main folder on a storage device called?", 
+            options: ["Platform", "Interface", "Root directory", "Device driver"], 
+            correct: 2,
+            explanation: "The root directory is the top-level directory of a file system. All other folders and files on the disk are organized within it.",
+            source: "IT_merged.pdf -> File Management Systems (Page 40)"
+        },
+        { 
+            q: "What is the permanent memory built into your computer called?", 
+            options: ["RAM", "Floppy", "ROM", "CPU"], 
+            correct: 2,
+            explanation: "ROM (Read-Only Memory) is non-volatile or permanent memory. It stores essential instructions like the BIOS that are needed to start the computer.",
+            source: "IT_merged.pdf -> Memory -> ROM (Page 29)"
+        },
+        { 
+            q: "Which of the following is an example of an input device?", 
+            options: ["Monitor", "Scanner", "Printer", "Speaker"], 
+            correct: 1,
+            explanation: "A scanner is an input device because it converts physical documents into digital format and 'feeds' that information into the computer.",
+            source: "IT_merged.pdf -> Hardware -> Input Devices (Page 25)"
+        },
+        { 
+            q: "A computer cannot 'boot' if it does not have the __________.", 
+            options: ["Compiler", "Loader", "Operating System", "Assembler"], 
+            correct: 2,
+            explanation: "The Operating System is the core software that manages hardware and software resources. Without it, the computer cannot complete the booting process and provide an interface to the user.",
+            source: "IT_merged.pdf -> Software -> Operating Systems (Page 35)"
+        },
+
+          { 
+            q: "How many kilobytes are there in 1 megabyte?", 
+            options: ["1000", "1024", "1048", "1032"], 
+            correct: 1,
+            explanation: "In digital data representation, storage capacities are measured in powers of 2. Therefore, 1 megabyte (MB) is equal to 1,024 kilobytes (KB).",
+            source: "IT_merged.pdf -> Digital Data Representation (Page 26 / 30)"
+        },
+        { 
+            q: "Which hardware technology was predominantly used in first-generation computers?", 
+            options: ["Microchips and transistors", "Vacuum tubes and magnetic drums", "Integrated circuits and RAM", "Fiber optics and quantum computing"], 
+            correct: 1,
+            explanation: "The first generation of computers (1946-1957) used vacuum tubes for circuitry and magnetic drums for memory storage.",
+            source: "IT_merged.pdf -> Generations of Computer -> First Generation (Page 10)"
+        },
+        { 
+            q: "When data is processed into a meaningful form, it becomes __________.", 
+            options: ["skills", "Data", "Information", "Integrated circuit"], 
+            correct: 2,
+            explanation: "Data refers to raw facts, while information is the result of processing those facts into a form that is meaningful and useful to the user.",
+            source: "IT_merged.pdf -> Data vs. Information (Page 8)"
+        },
+        { 
+            q: "What is a bit map image made up of?", 
+            options: ["curves", "numbers", "lines", "pixels"], 
+            correct: 3,
+            explanation: "A bitmap image is a common method for storing graphics data, consisting of a grid of small dots called pixels, where each pixel's color is represented by binary code.",
+            source: "IT_merged.pdf -> Coding Systems for graphics, Audio and Video (Page 28 / 34)"
+        },
+        { 
+            q: "The __________, which serves as the stage manager to ensure that all the other components act in concert.", 
+            options: ["Control unit", "Arithmetic/logic unit", "Memory unit", "Input unit"], 
+            correct: 0,
+            explanation: "The Control Unit (CU) coordinates and controls all operations within the CPU, directing the flow of electronic traffic like a traffic cop.",
+            source: "IT_merged.pdf -> Computer Hardware (Page 35)"
+        },
+        { 
+            q: "__________ represent text-based data written in any ancient or modern language, including those with different alphabets.", 
+            options: ["ASCII", "Byte", "Unicode", "Megabyte"], 
+            correct: 2,
+            explanation: "Unicode is a universal coding system designed to represent text-based data from any language, using a longer code (1 to 4 bytes) to accommodate over a million characters.",
+            source: "IT_merged.pdf -> Coding Systems for Text-Based (Page 27 / 33)"
+        },
+        { 
+            q: "The __________ is a tiny computer embedded into a product designed to perform specific tasks or functions for that product.", 
+            options: ["Desktop computer", "Embedded computer", "Server", "Super computer"], 
+            correct: 1,
+            explanation: "An embedded computer is specialized hardware built into a larger device (like a car or household appliance) to perform specific designated tasks.",
+            source: "IT_merged.pdf -> Embedded Computers (Page 17)"
+        },
+        { 
+            q: "The __________ which can perform arithmetic and logic operations on data.", 
+            options: ["Memory unit", "Control unit", "Output unit", "Arithmetic/logic unit"], 
+            correct: 3,
+            explanation: "The Arithmetic/Logic Unit (ALU) is the section of the CPU core responsible for performing mathematical calculations and logical comparisons.",
+            source: "IT_merged.pdf -> Computer Hardware (Page 35)"
+        },
+        { 
+            q: "The __________ connect expansion cards to the mother-board to add additional capabilities.", 
+            options: ["Flash memory card reader", "Expansion slots", "Hard drive", "USB ports"], 
+            correct: 1,
+            explanation: "Expansion slots are locations on the motherboard where expansion cards (like video or network cards) can be inserted to enhance the computer's functionality.",
+            source: "IT_merged.pdf -> Inside the System Unit -> Expansion Slots (Page 52)"
+        },
+        { 
+            q: "The __________ physical parts of a computer, can be internal or external.", 
+            options: ["Data", "Software", "Information", "Hardware"], 
+            correct: 3,
+            explanation: "Hardware refers to all the physical components of a computer system that you can touch, such as the system unit, monitor, and internal circuitry.",
+            source: "IT_merged.pdf -> The Computer System (Page 25)"
+        },
+        { 
+            q: "The measurement of the processing speed of a CPU is the CPU clock speed, in __________.", 
+            options: ["GHZ", "m/s", "rev/min", "m^2/s"], 
+            correct: 0,
+            explanation: "CPU clock speed is typically measured in Gigahertz (GHz) or Megahertz (MHz), representing the number of cycles the CPU performs per second.",
+            source: "IT_merged.pdf -> Processing Speed (Page 41)"
+        },
+        { 
+            q: "Which software technology was predominantly used in second-generation computers?", 
+            options: ["High-level languages", "Machine language", "High-level programming languages", "Assembly language"], 
+            correct: 3,
+            explanation: "While first-generation computers used machine language, the second generation (1958-1963) saw the introduction of assembly language for writing instructions.",
+            source: "IT_merged.pdf -> Generations of Computer -> Second Generation (Page 11)"
+        },
+        { 
+            q: "The __________ , which holds both data and instructions.", 
+            options: ["Arithmetic/logic unit", "Output unit", "Control unit", "Memory unit"], 
+            correct: 3,
+            explanation: "The Memory Unit (RAM) is the hardware component used to temporarily store both the data and the instructions currently in use by the computer.",
+            source: "IT_merged.pdf -> Computer Hardware (Page 35)"
+        },
+        { 
+            q: "How would you describe the computation time of third-generation computers?", 
+            options: ["Nanoseconds", "Seconds", "Microseconds", "Milliseconds"], 
+            correct: 0,
+            explanation: "Advancements in technology allowed the third generation of computers (1964-1970) to process instructions in nanoseconds (billionths of a second).",
+            source: "IT_merged.pdf -> Generations of Computer -> Third Generation (Page 12)"
+        },
+        { 
+            q: "The fifth generation computers use __________ chips that are able to store millions of components on a single chip.", 
+            options: ["Very Large Scale Integrated", "Minimum Scale Integrated", "None of the above", "Super Large Scale Integrated"], 
+            correct: 3,
+            explanation: "Fifth-generation computers utilize Super Large Scale Integrated (SLSI) chips, which can pack millions of components into a single microchip to support AI applications.",
+            source: "IT_merged.pdf -> Generations of Computer -> Fifth Generation (Page 14)"
+        },
+        { 
+            q: "__________ is designed to be used with a digital pen/stylus or touch input.", 
+            options: ["Desktop computer", "Processor", "Tablet computer", "Expansion Slots"], 
+            correct: 2,
+            explanation: "A tablet computer is a portable device, typically about the size of a notebook, designed primarily for touch or stylus-based interaction.",
+            source: "IT_merged.pdf -> Portable Computers -> Tablet computers (Page 21)"
         }
+    ]
+},
+
+
+
+
+        "phy1":{
+        title: "Quiz I",
+        questions:[
+        { 
+            q: "What is the pH of a buffer solution prepared with 0.1 M sodium acetate and 0.01 M acetic acid, given that the pKa value of acetic acid is 4.76 at 25°C?", 
+            options: ["4.76", "5.76", "3.76", "6.76"], 
+            correct: 1,
+            explanation: "According to the Henderson-Hasselbalch equation for weak acids: pH = pKa + log([Salt]/[Acid]). Substituting the values: pH = 4.76 + log(0.1 / 0.01) = 4.76 + log(10). Since log(10) = 1, the pH = 4.76 + 1 = 5.76.",
+            source: "buffer.pdf-1.pdf -> Henderson-Hasselbalch equation (Slide 26)"
+        },
+        { 
+            q: "Calculate the maximum buffer capacity (βmax) of a citrate buffer containing citric acid and sodium citrate, where the total buffer concentration (C) is 0.10 mole/liter.", 
+            options: ["0.576", "0.0576", "0.1152", "0.0288"], 
+            correct: 1,
+            explanation: "The formula for maximum buffer capacity is βmax = 0.576 × C. It occurs when pH = pKa and [Acid] = [Salt]. Substituting the total concentration: βmax = 0.576 × 0.10 = 0.0576.",
+            source: "buffer.pdf-1.pdf -> Maximum Buffer capacity (Slide 49-50)"
+        },
+        { 
+            q: "A 3.0-mole sample of an ideal gas is confined in a vessel at 25°C (298 K) and a pressure of 1 atm. What is the approximate volume of the gas? (Given R = 0.08205 L.atm/mole.K)", 
+            options: ["24.45 Liters", "47.65 Liters", "73.35 Liters", "82.05 Liters"], 
+            correct: 2,
+            explanation: "Using the General Ideal Gas Law equation: PV = nRT. To find Volume (V), rearrange to V = nRT / P. V = (3.0 moles × 0.08205 L.atm/mole.K × 298 K) / 1 atm = 73.35 Liters.",
+            source: "1. States of Matter final 2.pdf.pdf -> Calculation of Volume Using the Ideal Gas Law (Slide 14-17)"
+        },
+        { 
+            q: "In the assay of a gas, a volume of 50.0 mL is collected at a temperature of 20°C (293 K) and a pressure of 700 mm Hg. Assuming ideal behavior, what will be the volume at standard conditions (0°C / 273 K and 760 mm Hg)?", 
+            options: ["42.9 mL", "50.0 mL", "58.2 mL", "38.5 mL"], 
+            correct: 0,
+            explanation: "Using the combined gas law: (P1 × V1)/T1 = (P2 × V2)/T2. Rearranging for V2: V2 = (P1 × V1 × T2) / (P2 × T1). V2 = (700 × 50.0 × 273) / (760 × 293) = 9,555,000 / 222,680 = 42.9 mL.",
+            source: "1. States of Matter final 2.pdf.pdf -> Gas laws formulated by Boyle, Charles, and Gay-Lussac (Slide 12-13)"
+        },
+        { 
+            q: "Compute the vapor pressure of water at 120°C (393 K). The vapor pressure of water at 100°C (373 K) is 1.0 atm, and the molar heat of vaporization (ΔHv) is 9720 cal/mole. (R = 1.987 cal/mol K)", 
+            options: ["1.00 atm", "1.50 atm", "1.95 atm", "2.45 atm"], 
+            correct: 2,
+            explanation: "Using the Clausius-Clapeyron equation: log(P2/P1) = [ΔHv × (T2 - T1)] / [2.303 × R × T1 × T2]. log(P2/1.0) = [9720 × (393 - 373)] / [2.303 × 1.987 × 393 × 373]. log(P2) = 194400 / 671840.4 = 0.289. P2 = antilog(0.289) = 1.95 atm.",
+            source: "1. States of Matter final 2.pdf.pdf -> Application of the Clausius–Clapeyron Equation (Slide 30-31)"
+        },
+        { 
+            q: "What is the pH of a buffer solution prepared with 0.05 M ammonia and 0.05 M ammonium chloride? The Kb value of ammonia is 1.80 × 10^-5 at 25°C. (Assume pKw = 14)", 
+            options: ["4.74", "9.26", "7.00", "10.50"], 
+            correct: 1,
+            explanation: "First calculate pKb: pKb = -log(1.8 × 10^-5) = 4.74. Using the Henderson-Hasselbalch equation for basic buffers: pH = pKw - pKb + log([Base]/[Salt]). pH = 14 - 4.74 + log(0.05/0.05). Since log(1) = 0, the pH = 9.26.",
+            source: "buffer.pdf-1.pdf -> Henderson-Hasselbalch equation for bases (Slide 27)"
+        },
+        { 
+            q: "What molar ratio of [Salt] to [Acid] is required to prepare a sodium acetate-acetic acid buffer solution with a pH of 6.76? (pKa of acetic acid = 4.76 at 25°C)", 
+            options: ["1 : 1", "10 : 1", "100 : 1", "1 : 100"], 
+            correct: 2,
+            explanation: "Using the Henderson-Hasselbalch equation: pH = pKa + log([Salt]/[Acid]). 6.76 = 4.76 + log([Salt]/[Acid]). 6.76 - 4.76 = 2.0. Therefore, log([Salt]/[Acid]) = 2. Taking the antilog: [Salt]/[Acid] = 10^2 = 100. The ratio is 100:1.",
+            source: "buffer.pdf-1.pdf -> Molar Ratio (Slide 29)"
+        },
+        { 
+            q: "In the van der Waals equation for real gases, what does the term 'a/V^2' account for?", 
+            options: ["The finite volume of the gas molecules", "The perfectly elastic collisions between molecules", "The internal pressure resulting from intermolecular forces of attraction", "The incompressibility of the excluded volume"], 
+            correct: 2,
+            explanation: "In the van der Waals equation, real gases deviate from ideal behavior. The term 'a/V^2' accounts for the internal pressure per mole resulting from the intermolecular forces of attraction between the molecules, while 'b' accounts for the excluded volume.",
+            source: "1. States of Matter final 2.pdf.pdf -> The van der Waals Equation for Real Gases (Slide 20)"
+        },
+        { 
+            q: "To solve for Pressure (P) using the van der Waals equation for 'n' moles of gas, how is the equation correctly rearranged?", 
+            options: ["P = (nRT) / (V - nb) + (an^2 / V^2)", "P = (nRT) / (V - nb) - (an^2 / V^2)", "P = (V - nb) / (nRT) - (an^2 / V^2)", "P = nRT - (an^2 / V^2) * (V - nb)"], 
+            correct: 1,
+            explanation: "The van der Waals equation is: (P + an^2/V^2)(V - nb) = nRT. Dividing both sides by (V - nb) gives: P + an^2/V^2 = nRT / (V - nb). Subtracting an^2/V^2 from both sides yields: P = [nRT / (V - nb)] - [an^2 / V^2].",
+            source: "1. States of Matter final 2.pdf.pdf -> Application of the van der Waals Equation (Slide 24)"
+        },
+        { 
+            q: "How do nonpolar solvents, such as mineral oil or benzene, manage to dissolve nonpolar solutes?", 
+            options: ["By reducing the force of attraction between oppositely charged ions", "By forming strong hydrogen bridges with nonelectrolytes", "By breaking covalent bonds through acid-base reactions", "By utilizing weak van der Waals-London type of forces"], 
+            correct: 3,
+            explanation: "Nonpolar solvents have low dielectric constants and cannot form hydrogen bridges. However, they can dissolve nonpolar solutes and keep them in solution by the weak van der Waals-London type of forces.",
+            source: "Solubility and Distribution .pdf -> Solvent Solute Interactions / Nonpolar Solvents (Page 9)"
+        },
+        { 
+            q: "What causes the phenomenon known as 'Salting out' when a small amount of salt is added to a carbonated solution?", 
+            options: ["The salt ions react chemically with the dissolved gas to form a solid precipitate.", "The salt ions lower the temperature of the solution, forcing the gas to escape.", "The attraction of salt ions for water molecules reduces the density of the aqueous environment adjacent to the gas molecules.", "The electrolyte increases the dielectric constant, permanently trapping the gas."], 
+            correct: 2,
+            explanation: "Salting out is the liberation of a gas from solutions by introducing an electrolyte. The resultant escape of gas is due to the attraction of the salt ions (or highly polar nonelectrolyte) for the water molecules, which reduces the density of the aqueous environment adjacent to the gas molecules.",
+            source: "Solubility and Distribution Phenomenon-2.pdf.pdf -> Solubility of Gases in Liquids: Salting out (Page 7)"
+        },
+        { 
+            q: "According to structural features affecting solubility, what happens to the water solubility of an aliphatic alcohol as the length of its nonpolar carbon chain increases?", 
+            options: ["The solubility in water increases greatly.", "The solubility in water decreases.", "The solubility remains completely unaffected.", "It becomes completely miscible in all proportions."], 
+            correct: 1,
+            explanation: "As the length of a nonpolar chain of an aliphatic alcohol increases, the solubility of the compound in water decreases. Conversely, branching of the carbon chain reduces the nonpolar effect and leads to increased water solubility.",
+            source: "Solubility and Distribution .pdf -> Structural features (Page 7)"
+        },
+        { 
+            q: "In a binary liquid system of partial miscibility (like phenol and water), what happens if a third substance is added that is soluble in BOTH liquids to roughly the same extent?", 
+            options: ["The mutual solubility of the liquid pair is decreased.", "The critical solution temperature is completely eliminated.", "The mutual solubility of the liquid pair is increased.", "The two liquids immediately separate into distinct, non-miscible layers."], 
+            correct: 2,
+            explanation: "When a third substance is added to a binary liquid system, if it is soluble in only one component, mutual solubility decreases. However, when the third substance is soluble in both of the liquids to roughly the same extent, the mutual solubility of the liquid pair is increased.",
+            source: "Solubility and Distribution Phenomenon-2.pdf.pdf -> Partial Miscibility: Influence of Foreign Substances (Page 12)"
+        },
+        { 
+            q: "According to the principles of buffer capacity, which of the following actions will result in an INCREASE in the buffer capacity of a solution?", 
+            options: ["Decreasing the concentration of the buffer components.", "Increasing the concentration of the buffer components.", "Changing the pKa of the acid.", "Adding large amounts of unbuffered water to the solution."], 
+            correct: 1,
+            explanation: "Buffer capacity is the ability to resist changes in pH. An increase in buffer concentration directly leads to an increase in buffer capacity (⇧ Buffer concentration ⇨ ⇧ Buffer capacity). Changing the pKa or the ratio of components does not independently scale the capacity in the same direct proportional manner.",
+            source: "buffer.pdf-1.pdf -> Buffer capacity relationships (Slide 52)"
+        },
+        { 
+            q: "Why does the solubility of most gases in liquids decrease as the temperature increases?", 
+            options: ["Because high temperatures increase the dielectric constant of the liquid.", "Because gas molecules undergo an endothermic complex formation at high temperatures.", "Because higher temperatures increase the kinetic energy, leading to a greater tendency for the gas to escape.", "Because the vapor pressure of the solvent falls to zero at higher temperatures."], 
+            correct: 2,
+            explanation: "As the temperature increases, the solubility of most gases decreases due to the greater tendency of the gas to escape. The increased thermal energy causes the gas molecules to break away from the solvent's intermolecular hold and return to the gaseous phase.",
+            source: "Solubility and Distribution Phenomenon-2.pdf.pdf -> Solubility of Gases in Liquids: Effect of Temperature (Page 6)"
+        }
+    ]
+},
+
+        "phy2":{
+    title: "Quiz II",
+    questions:[
+        { 
+            q: "A drug has a partition coefficient (K) of 4.0 between octanol and water. If 100 mg of the drug is dissolved in 50 mL of water and then extracted with 50 mL of octanol, calculate the amount of drug remaining in the water phase.", 
+            options: ["25 mg", "80 mg", "20 mg", "10 mg"], 
+            correct: 2,
+            explanation: "Using the distribution law formula: W1 = W * [Vw / (K*Vo + Vw)]. Where W=100mg, Vw=50mL, Vo=50mL, and K=4. W1 = 100 * [50 / (4*50 + 50)] = 100 * [50 / 250] = 100 * 0.2 = 20 mg.",
+            source: "Solubility and Distribution Phenomenon-2.pdf.pdf -> Distribution of Solutes between Immiscible Solvents (Page 18-19)"
+        },
+        { 
+            q: "Calculate the buffer capacity (β) of a solution containing 0.05 M of a weak acid and 0.05 M of its conjugate base, given that the pKa is 4.76 and the [H3O+] is 1.74 × 10^-5. (Use Van Slyke’s equation)", 
+            options: ["0.0576", "0.023", "0.115", "0.048"], 
+            correct: 0,
+            explanation: "Van Slyke’s equation: β = 2.303 * C * [(Ka * [H3O+]) / (Ka + [H3O+])^2]. Since pH=pKa (both are 4.76), the term in the brackets becomes 0.25. C = 0.05 + 0.05 = 0.1 M. β = 2.303 * 0.1 * 0.25 = 0.0576.",
+            source: "buffer.pdf-1.pdf -> Buffer Capacity / Van Slyke’s equation (Slide 44-46)"
+        },
+        { 
+            q: "For a real gas, the van der Waals constant 'a' represents the magnitude of intermolecular attractions. If a gas has a very large 'a' value and a small 'b' value, how will it behave compared to an ideal gas at high pressures?", 
+            options: ["It will exert higher pressure than an ideal gas.", "It will exert lower pressure than an ideal gas.", "It will behave exactly like an ideal gas.", "The molar volume will be larger than expected."], 
+            correct: 1,
+            explanation: "The constant 'a' accounts for internal pressure (attraction). A large 'a' value means strong intermolecular forces, which reduce the impact of molecules on the container walls, thus the observed pressure (P) will be significantly lower than the ideal pressure.",
+            source: "1. States of Matter final 2.pdf.pdf -> The van der Waals Equation (Slide 20-21)"
+        },
+        { 
+            q: "Determine the molecular weight of a volatile liquid if 0.48 g of its vapor occupies 200 mL at 100°C and 740 mm Hg. (R = 0.08205 L.atm/mol.K)", 
+            options: ["60.5 g/mol", "92.1 g/mol", "110.4 g/mol", "75.2 g/mol"], 
+            correct: 3,
+            explanation: "Use M = (gRT) / (PV). Convert T to Kelvin (373 K), P to atm (740/760 = 0.974 atm), and V to Liters (0.2 L). M = (0.48 * 0.08205 * 373) / (0.974 * 0.2) = 75.4 g/mol (Closest to 75.2).",
+            source: "1. States of Matter final 2.pdf.pdf -> Ideal Gas Law / Molecular Weight Determination (Slide 16)"
+        },
+        { 
+            q: "In a binary system of phenol and water, the addition of 0.1 M naphthalene (a substance soluble only in phenol) will have what effect on the Critical Solution Temperature (CST)?", 
+            options: ["It will decrease the CST.", "It will increase the CST.", "It will have no effect on the CST.", "It will make the two liquids completely miscible at all temperatures."], 
+            correct: 1,
+            explanation: "When a third substance is added to a partially miscible pair, if it is soluble in only one of the liquids (like naphthalene in phenol), the mutual solubility decreases and the Critical Solution Temperature (CST) increases.",
+            source: "Solubility and Distribution Phenomenon-2.pdf.pdf -> Influence of Foreign Substances on CST (Page 12)"
+        },
+        { 
+            q: "Calculate the vapor pressure of a solution containing 18g of glucose (MW=180) in 100g of water at 25°C. (Vapor pressure of pure water at 25°C is 23.8 mm Hg)", 
+            options: ["21.42 mm Hg", "22.50 mm Hg", "23.38 mm Hg", "23.80 mm Hg"], 
+            correct: 2,
+            explanation: "Using Raoult's Law: P = P° * X_solvent. Moles of glucose = 18/180 = 0.1. Moles of water = 100/18 = 5.55. X_water = 5.55 / (5.55 + 0.1) = 0.9823. P = 23.8 * 0.9823 = 23.38 mm Hg.",
+            source: "1. States of Matter final 2.pdf.pdf -> Raoult’s Law / Vapor Pressure of Solutions (Slide 33-34)"
+        },
+        { 
+            q: "Which of the following statements correctly describes the 'Solubility Product' (Ksp) and its relationship to the 'Common Ion Effect'?", 
+            options: ["The Ksp remains constant, but the molar solubility of the salt decreases when a common ion is added.", "Adding a common ion increases the Ksp value.", "Adding a common ion increases the molar solubility to maintain Ksp.", "Ksp is only applicable to highly soluble strong electrolytes."], 
+            correct: 0,
+            explanation: "The solubility product (Ksp) is a constant at a given temperature. When a common ion is added, the equilibrium shifts to the left (precipitation), which decreases the molar solubility of the salt.",
+            source: "Solubility and Distribution .pdf -> Solubility of Slightly Soluble Electrolytes (Page 18)"
+        },
+        { 
+            q: "A buffer solution must be prepared at pH 9.0 using a weak base with a pKb of 4.74. What is the required [Salt]/[Base] ratio?", 
+            options: ["0.55", "0.26", "3.84", "1.82"], 
+            correct: 3,
+            explanation: "For basic buffers: pH = pKw - pKb + log([Base]/[Salt]). 9.0 = 14 - 4.74 + log([Base]/[Salt]). log([Base]/[Salt]) = -0.26. [Base]/[Salt] = 0.55. Therefore, [Salt]/[Base] = 1 / 0.55 = 1.82.",
+            source: "buffer.pdf-1.pdf -> Henderson-Hasselbalch equation for bases (Slide 27-28)"
+        },
+        { 
+            q: "According to the Clausius-Clapeyron equation, if the molar heat of vaporization (ΔHv) of a liquid is very high, how does its vapor pressure change with a small increase in temperature?", 
+            options: ["The vapor pressure increases slightly.", "The vapor pressure remains constant.", "The vapor pressure increases significantly.", "The vapor pressure decreases."], 
+            correct: 2,
+            explanation: "The Clausius-Clapeyron equation shows that the rate of change of log P with respect to T is proportional to ΔHv. A high ΔHv means the vapor pressure is highly sensitive to temperature changes.",
+            source: "1. States of Matter final 2.pdf.pdf -> Clausius–Clapeyron Equation (Slide 30)"
+        },
+        { 
+            q: "In the case of 'Molecular Association', if a substance like benzoic acid exists as a dimer in a non-polar solvent (benzene) but as a monomer in water, how is the distribution coefficient (K) modified?", 
+            options: ["K = C_water / √C_benzene", "K = C_water / C_benzene", "K = √C_water / C_benzene", "K = C_water^2 / C_benzene"], 
+            correct: 0,
+            explanation: "When association occurs in the organic phase (dimerization), the concentration in that phase (Co) must be square-rooted to account for the equilibrium between monomer and dimer: K = C_aq / √C_org.",
+            source: "Solubility and Distribution Phenomenon-2.pdf.pdf -> Association (Page 21)"
+        }
+    ]
+},
+
+
+
+        "his1":{
+            title: "Quiz I",
+            questions: [
+    { 
+        q: "In the standard anatomical position, the palms of the hands are directed:", 
+        options: ["Backward", "Medially", "Forward (Anteriorly)", "Internally"], 
+        correct: 2,
+        explanation: "The anatomical position requires the palms to face forward. This is a fundamental standard mentioned in the first lecture.",
+        source: "anatomy 1.mp3 [1], 1,2-Introduction to Human Anatomy.pdf [2]"
+    },
+    { 
+        q: "What type of epithelium lines the inner surface of the stomach?", 
+        options: ["Simple squamous", "Simple columnar", "Simple cuboidal", "Transitional"], 
+        correct: 1,
+        explanation: "Simple columnar epithelium is the specific type that lines the stomach, as shown in the histology classification.",
+        source: "1 Epith-CT-pharm.pdf [3]"
+    },
+    { 
+        q: "Which anatomical plane divides the body into equal right and left halves?", 
+        options: ["Coronal plane", "Transverse plane", "Median plane", "Horizontal plane"], 
+        correct: 2,
+        explanation: "The median (or midsagittal) plane is the vertical plane passing exactly through the center to create equal halves.",
+        source: "anatomy 1.mp3 [4, 5], 1,2-Introduction to Human Anatomy.pdf [2]"
+    },
+    { 
+        q: "What is the approximate length of the esophagus, a common number shared with other organs?", 
+        options: ["12 cm", "25 cm", "40 cm", "10 cm"], 
+        correct: 1,
+        explanation: "The instructor emphasized that 25 cm is the length of the esophagus and is a very common figure in anatomy exams.",
+        source: "anatomy_2.m4a [6]"
+    },
+    { 
+        q: "Which connective tissue cell is responsible for synthesizing and secreting antibodies?", 
+        options: ["Fibroblast", "Macrophage", "Plasma cell", "Mast cell"], 
+        correct: 2,
+        explanation: "Plasma cells, characterized by a clock-face nucleus, have the primary function of antibody production.",
+        source: "1 Epith-CT-pharm.pdf [7]"
+    },
+    { 
+        q: "The humerus (arm bone) and femur (thigh bone) are classified as which type of bone?", 
+        options: ["Flat bones", "Short bones", "Long bones", "Irregular bones"], 
+        correct: 2,
+        explanation: "Bones of the limbs that have a shaft and two ends are classified as long bones.",
+        source: "anatomy_2.m4a [8], 1,2-Introduction to Human Anatomy.pdf [9]"
+    },
+    { 
+        q: "Which type of muscle is striated and under voluntary control?", 
+        options: ["Smooth muscle", "Cardiac muscle", "Skeletal muscle", "Involuntary muscle"], 
+        correct: 2,
+        explanation: "Skeletal muscles are voluntary and striated, such as the muscles of the limbs.",
+        source: "anatomy 1.mp3 [10], 1,2-Introduction to Human Anatomy.pdf [11]"
+    },
+    { 
+        q: "Intercalated discs are a unique identifying feature of which muscle type?", 
+        options: ["Skeletal muscle", "Smooth muscle", "Cardiac muscle", "Striated muscle"], 
+        correct: 2,
+        explanation: "Intercalated discs are junctional complexes found only between adjacent cardiac muscle cells.",
+        source: "2, Muscle & Nerve.pptx [12]"
+    },
+    { 
+        q: "Which of the following salivary glands is the largest?", 
+        options: ["Sublingual gland", "Submandibular gland", "Parotid gland", "Thyroid gland"], 
+        correct: 2,
+        explanation: "The parotid gland, located in front of the ear, is explicitly identified as the largest salivary gland.",
+        source: "anatomy_2.m4a [13]"
+    },
+    { 
+        q: "Skull sutures are examples of which type of joint?", 
+        options: ["Synovial joint", "Fibrous joint", "Secondary cartilaginous joint", "Primary cartilaginous joint"], 
+        correct: 1,
+        explanation: "Sutures of the skull are fibrous joints where no movement is allowed because the bones are fused by fibrous tissue.",
+        source: "anatomy_2.m4a [14], 1,2-Introduction to Human Anatomy.pdf [15]"
+    }
+]
+        },
+
+
+        "his2":{
+        title: "Quiz II",
+        questions: [
+    { 
+        q: "In the standard anatomical position, how should the palms of the hands be directed to meet the required conditions?", 
+        options: ["Medially toward the body", "Anteriorly (forward)", "Posteriorly (backward)", "Internally toward the thighs"], 
+        correct: 1,
+        explanation: "The audio emphasizes four strict conditions for the anatomical position: standing erect, eyes forward, arms at sides with palms forward, and feet parallel [1, 2]. This standardizes anatomical descriptions globally [1].",
+        source: "anatomy 1.mp3, 1,2-Introduction to Human Anatomy.pdf"
+    },
+    { 
+        q: "Which anatomical plane is vertical and divides the body into equal right and left halves?", 
+        options: ["Sagittal plane", "Coronal plane", "Horizontal plane", "Median plane"], 
+        correct: 3,
+        explanation: "The median (or midsagittal) plane is a vertical plane passing through the center of the body, creating two identical halves [3, 4]. Other sagittal planes are parallel but do not divide the body equally [4, 5].",
+        source: "anatomy 1.mp3, 1,2-Introduction to Human Anatomy.pdf"
+    },
+    { 
+        q: "What is the approximate length of the esophagus, a measurement noted for being a common number in multiple body structures?", 
+        options: ["12 cm", "25 cm", "10 cm", "40 cm"], 
+        correct: 1,
+        explanation: "The esophagus is a muscular tube about 25 cm long [6]. The instructor highlighted this number as it is shared by several other anatomical structures, making it a favorite for exams [6].",
+        source: "anatomy_2.m4a, 1,2-Introduction to Human Anatomy.pdf"
+    },
+    { 
+        q: "Based on the 'Stomach Bed' concept emphasized in the lectures, which of the following structures is NOT located behind the stomach?", 
+        options: ["Spleen", "Left Kidney", "Pancreas", "Right Suprarenal gland"], 
+        correct: 3,
+        explanation: "The stomach bed consists of structures posterior to it, specifically the LEFT kidney and LEFT suprarenal gland [7, 8]. The instructor warned that mixing up left and right is a common pitfall [7].",
+        source: "anatomy_2.m4a"
+    },
+    { 
+        q: "Regarding muscle regeneration, which type of muscle tissue is capable of division and has high regeneration power?", 
+        options: ["Skeletal muscle", "Cardiac muscle", "Smooth muscle", "Striated muscle"], 
+        correct: 2,
+        explanation: "Smooth muscle cells can divide and regenerate well [9]. In contrast, cardiac muscle has very poor regeneration, and skeletal muscle has limited capacity through satellite cells [9].",
+        source: "2, Muscle & Nerve.pptx, anatomy 1.mp3"
+    },
+    { 
+        q: "Which type of joint is the epiphyseal plate found in growing long bones, where no movement is allowed?", 
+        options: ["Primary cartilaginous joint", "Secondary cartilaginous joint", "Fibrous joint", "Synovial joint"], 
+        correct: 0,
+        explanation: "Primary cartilaginous joints consist of hyaline cartilage that eventually ossifies, such as the epiphyseal plate [10-12]. These joints allow for growth rather than movement [12].",
+        source: "anatomy_2.m4a, 1,2-Introduction to Human Anatomy.pdf"
+    },
+    { 
+        q: "In which anatomical region is deep fascia absent to allow for volume changes during respiration and pregnancy?", 
+        options: ["The scalp", "The palms of the hands", "The abdomen", "The soles of the feet"], 
+        correct: 2,
+        explanation: "Deep fascia is inelastic and would prevent the abdomen from expanding [13, 14]. Therefore, it is absent in the abdominal wall to facilitate breathing and pregnancy [13].",
+        source: "anatomy 1.mp3, 1,2-Introduction to Human Anatomy.pdf"
+    },
+    { 
+        q: "Which of the following is considered a general characteristic of epithelial tissue?", 
+        options: ["It is highly vascular", "It has abundant extracellular matrix", "It is avascular", "It lacks the power of regeneration"], 
+        correct: 2,
+        explanation: "Epithelial tissue is characterized by being avascular (no blood vessels) and having a high power of regeneration [15, 16]. It also has very little extracellular matrix compared to connective tissue [15, 17].",
+        source: "1 Epith-CT-pharm.pdf"
+    },
+    { 
+        q: "Which part of the stomach's pylorus is characterized by a thick muscular ring that acts as a valve?", 
+        options: ["Pyloric antrum", "Pyloric canal", "Pyloric sphincter", "Fundus"], 
+        correct: 2,
+        explanation: "The pylorus is divided into the antrum, canal, and the sphincter [18]. The sphincter is a muscular valve that controls the passage of food into the duodenum [18].",
+        source: "anatomy_2.m4a, 1,2-Introduction to Human Anatomy.pdf"
+    },
+    { 
+        q: "Which salivary gland is identified as the largest among the three main pairs?", 
+        options: ["Submandibular gland", "Sublingual gland", "Parotid gland", "Esophageal gland"], 
+        correct: 2,
+        explanation: "The parotid gland, located in front of the ear, is the largest of the salivary glands [19, 20]. This fact is explicitly noted as important for multiple-choice questions [20].",
+        source: "anatomy_2.m4a"
+    }
+]
+        },
+
+
+        "his3":{
+        title: "Quiz III",
+        questions: [
+    { 
+        q: "A patient has an injury affecting the structures located posterior to the stomach. Which of the following organs would most likely be spared if the injury is strictly localized to the 'Stomach Bed'?", 
+        options: ["The Pancreas", "The Left Suprarenal gland", "The Right Kidney", "The Spleen"], 
+        correct: 2,
+        explanation: "The stomach bed consists of structures posterior to it, specifically the LEFT kidney and LEFT suprarenal gland [1, 2]. The instructor emphasized that mistaking 'Left' for 'Right' is a common error in exams [2].",
+        source: "anatomy_2.m4a"
+    },
+    { 
+        q: "In the study of tissue repair, which of the following muscle types is correctly matched with its mechanism of regeneration?", 
+        options: ["Skeletal muscle; High regeneration through mitotic division of mature fibers", "Cardiac muscle; Limited regeneration via satellite cells", "Smooth muscle; Good regeneration through mitotic division of its cells", "Skeletal muscle; Poor regeneration due to the absence of progenitor cells"], 
+        correct: 2,
+        explanation: "Smooth muscle cells are capable of division and have good regeneration [3]. Skeletal muscle cannot divide but has *limited* regeneration via satellite cells, while cardiac muscle has very poor regeneration [3, 4].",
+        source: "2, Muscle & Nerve.pptx, anatomy 1.mp3"
+    },
+    { 
+        q: "During a physical examination, a doctor asks a patient to move their fingers away from the middle finger. Which of the following describes this movement and its reference axis?", 
+        options: ["Adduction; moving toward the median plane of the body", "Abduction; moving away from the longitudinal axis of the middle finger", "Abduction; moving away from the index finger", "Extension; moving in a coronal plane"], 
+        correct: 1,
+        explanation: "In the hand, abduction is defined as moving the fingers away from the middle finger, which serves as the functional axis for this movement [5, 6].",
+        source: "1,2-Introduction to Human Anatomy.pdf, anatomy 1.mp3"
+    },
+    { 
+        q: "When examining epithelial tissue under an Electron Microscope (E.M.), which structure is found specifically between the Basal lamina and the underlying connective tissue?", 
+        options: ["Basement membrane", "Reticular lamina", "Plasma membrane", "Intermediate filaments"], 
+        correct: 1,
+        explanation: "Under E.M., the basement membrane is revealed to consist of two distinct layers: the basal lamina (closer to the epithelium) and the reticular lamina (closer to the connective tissue) [7].",
+        source: "1 Epith-CT-pharm.pdf"
+    },
+    { 
+        q: "Deep fascia is known for its inelasticity and role in compartmentalization. In which of the following scenarios would its presence be anatomically disadvantageous?", 
+        options: ["During rapid muscle contraction in the lower limbs", "In the palms of the hands during heavy lifting", "During the expansion of the abdominal wall in pregnancy", "In the scalp to prevent fluid accumulation"], 
+        correct: 2,
+        explanation: "Deep fascia is absent in the abdomen because its inelastic nature would prevent the necessary volume changes during respiration and pregnancy [8, 9].",
+        source: "1,2-Introduction to Human Anatomy.pdf, anatomy 1.mp3"
+    },
+    { 
+        q: "A histological slide shows a cell with a 'clock-face' nucleus and basophilic cytoplasm containing Russell bodies. What is the primary function of this cell?", 
+        options: ["Phagocytosis of foreign debris", "Synthesis and secretion of antibodies", "Production of heparin and histamine", "Synthesis of Collagen Type III"], 
+        correct: 1,
+        explanation: "These features (clock-face nucleus, Russell bodies) are diagnostic for plasma cells, which are responsible for secreting antibodies [10, 11].",
+        source: "1 Epith-CT-pharm.pdf"
+    },
+    { 
+        q: "Which of the following measurements is shared by the esophagus and several other internal structures, making it a critical anatomical figure?", 
+        options: ["12 cm", "10 cm", "25 cm", "40 cm"], 
+        correct: 2,
+        explanation: "The esophagus is approximately 25 cm long [12]. The audio notes that this specific measurement is common to several other organs, making it a frequent exam topic [12].",
+        source: "anatomy_2.m4a"
+    },
+    { 
+        q: "In the classification of joints, how does the epiphyseal plate in a growing child differ from the pubic symphysis?", 
+        options: ["The epiphyseal plate is a secondary cartilaginous joint; the pubic symphysis is primary", "The epiphyseal plate allows no movement and eventually ossifies; the pubic symphysis allows limited movement", "Both are primary cartilaginous joints but differ in their location", "The epiphyseal plate contains fibrocartilage; the pubic symphysis contains only hyaline cartilage"], 
+        correct: 1,
+        explanation: "The epiphyseal plate is a primary cartilaginous joint (hyaline cartilage) that allows no movement and ossifies with age [13, 14]. The pubic symphysis is a secondary cartilaginous joint that uses fibrocartilage to allow limited movement [13, 15].",
+        source: "1,2-Introduction to Human Anatomy.pdf, anatomy_2.m4a"
+    },
+    { 
+        q: "Which specific connective tissue fiber is characterized by being extremely thin, branching, and composed of Collagen Type III?", 
+        options: ["Collagen fibers", "Elastic fibers", "Reticular fibers", "Intermediate fibers"], 
+        correct: 2,
+        explanation: "Reticular fibers are specifically composed of Collagen Type III and form a delicate branching framework for support [11, 16].",
+        source: "1 Epith-CT-pharm.pdf"
+    },
+    { 
+        q: "The largest salivary gland in the human body is identified not only by its size but also by its specific type of secretion. Which is it?", 
+        options: ["Submandibular gland; Sero-mucous", "Sublingual gland; Mucous", "Parotid gland; Serous (watery and enzyme-rich)", "Parotid gland; Mucous"], 
+        correct: 2,
+        explanation: "The parotid gland is the largest salivary gland [17]. It is a serous gland, meaning it secretes a watery fluid rich in enzymes [18].",
+        source: "anatomy_2.m4a, 1 Epith-CT-pharm.pdf"
+    }
+]
+        },
+
+
+
+
+
 
         };
 
